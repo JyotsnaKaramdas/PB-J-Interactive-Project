@@ -14,7 +14,7 @@ let x, y;
 let dy = 0;
 
 // falling foods
-let shapes = [];
+let foods = [];
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -64,23 +64,23 @@ function draw() {
   text(scoreTracker, 550, 35);
 
   // falling foods for-loop
-  for(let shape of shapes) {
+  for(let food of foods) {
     push();
-    shape.y += 1.5;
-    if(shape.shapeType === 'bread') {
-      image(setting.bread, shape.x, shape.y, 125, 50);
+    food.y += 1.5;
+    if(food.foodType === 'bread') {
+      image(setting.bread, food.x, food.y, 125, 50);
     }
-    if(shape.shapeType === 'jelly') {
-      image(setting.jelly, shape.x, shape.y, 125, 50);
+    if(food.foodType === 'jelly') {
+      image(setting.jelly, food.x, food.y, 125, 50);
     }
-    if(shape.shapeType === 'peanutButter') {
-      image(setting.peanutButter, shape.x, shape.y, 125, 50);
+    if(food.foodType === 'peanutButter') {
+      image(setting.peanutButter, food.x, food.y, 125, 50);
     }
-    if(shape.shapeType === 'mustard') {
-      image(setting.mustard, shape.x, shape.y, 125, 50);
+    if(food.foodType === 'mustard') {
+      image(setting.mustard, food.x, food.y, 125, 50);
     }
-    if(shape.shapeType === 'ketchup') {
-      image(setting.ketchup, shape.x, shape.y, 125, 50);
+    if(food.foodType === 'ketchup') {
+      image(setting.ketchup, food.x, food.y, 125, 50);
   }
     pop();
   }
@@ -107,12 +107,12 @@ function keyPressed() {
 }
 
 function addAFood() {
-  shape1 = {
+  food1 = {
     x: random(width),
     y: -20,
-    shapeType: random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup'])
+    foodType: random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup'])
   }
-  shapes.push(shape1);
+  foods.push(food1);
 }
 
 // mouse interaction for score tracker
