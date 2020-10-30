@@ -45,17 +45,17 @@ function setup() {
 
 function draw() {
   // backgroundColorChanges 
-  speed = 0.25;
+  speed = 0.05;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
 
   // park setting images
-  image(setting.park, -100, 100 + frameCount * 0.25, 770, 600);
-  image(setting.blanket, 50, 500 + frameCount * 0.25, 500, 130);
-  image(setting.basket, 130, 520 + frameCount * 0.25, 90, 80);
+  image(setting.park, -100, 100 + frameCount * 0.05, 770, 600);
+  image(setting.blanket, 50, 500 + frameCount * 0.05, 500, 130);
+  image(setting.basket, 130, 520 + frameCount * 0.05, 90, 80);
 
   // mouseX (bottom bread slice)
-  image(setting.bread, mouseX, 580 + frameCount * 0.25, 125, 50);
+  image(setting.bread, mouseX, 580 + frameCount * 0.05, 125, 50);
 
   // score tracker properties 
   textSize(35);
@@ -65,24 +65,8 @@ function draw() {
 
   // falling foods for-loop
   for(let food of foods) {
-    push();
-    food.y += 1.5;
-    if(food.foodType === 'bread') {
-      image(setting.bread, food.x, food.y, 125, 50);
-    }
-    if(food.foodType === 'jelly') {
-      image(setting.jelly, food.x, food.y, 125, 50);
-    }
-    if(food.foodType === 'peanutButter') {
-      image(setting.peanutButter, food.x, food.y, 125, 50);
-    }
-    if(food.foodType === 'mustard') {
-      image(setting.mustard, food.x, food.y, 125, 50);
-    }
-    if(food.foodType === 'ketchup') {
-      image(setting.ketchup, food.x, food.y, 125, 50);
-  }
-    pop();
+    food.draw();
+    food.update();
   }
 }
 
@@ -107,14 +91,93 @@ function keyPressed() {
 }
 
 function addAFood() {
-  food1 = {
-    x: random(width),
-    y: -20,
-    foodType: random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup'])
+  if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'bread') {
+    let food1 = new Bread(random(width), -20);
+    foods.push(food1);
   }
-  foods.push(food1);
+  if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'jelly') {
+    let food1 = new Jelly(random(width), -20);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'peanutButter') {
+    let food1 = new PeanutButter(random(width), -20);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'mustard') {
+    let food1 = new Mustard(random(width), -20);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'ketchup') {
+    let food1 = new Ketchup(random(width), -20);
+    foods.push(food1);
+  }
 }
 
+class Bread {
+  constructor(x, y) {
+   this.x = x;
+   this.y = y;
+ }
+ update() {
+   this.y += 1.25;
+ }
+ draw() {
+  image(setting.bread, this.x, this.y, 125, 50);
+ }
+} 
+ 
+class Jelly {
+  constructor(x, y) {
+   this.x = x;
+   this.y = y;
+ }
+ update() {
+   this.y += 1.25;
+ }
+ draw() {
+  image(setting.jelly, this.x, this.y, 125, 50);
+ }
+}
+ 
+class PeanutButter {
+  constructor(x, y) {
+   this.x = x;
+   this.y = y;
+ }
+ update() {
+   this.y += 1.25;
+ }
+ draw() {
+  image(setting.peanutButter, this.x, this.y, 125, 50);
+ }
+}
+
+class Mustard {
+  constructor(x, y) {
+   this.x = x;
+   this.y = y;
+ }
+ update() {
+   this.y += 1.25;
+ }
+ draw() {
+  image(setting.mustard, this.x, this.y, 125, 50);
+ }
+}
+
+class Ketchup {
+  constructor(x, y) {
+   this.x = x;
+   this.y = y;
+ }
+ update() {
+   this.y += 1.25;
+ }
+ draw() {
+  image(setting.ketchup, this.x, this.y, 125, 50);
+ }
+}
+ 
 // mouse interaction for score tracker
 function mousePressed() {
   scoreTracker++;
