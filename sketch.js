@@ -108,7 +108,7 @@ function keyPressed() {
 
 function addAFood() {
   shape1 = {
-    x: mouseX,
+    x: random(width),
     y: -20,
     shapeType: random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup'])
   }
