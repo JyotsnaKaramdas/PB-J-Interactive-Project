@@ -102,6 +102,7 @@ function mousePressed() {
   scoreTracker++;
 }
 
+<<<<<<< HEAD
 function keyPressed() {
   if(keyCode === SHIFT) {
     addAFood();
@@ -166,6 +167,10 @@ class PeanutButter {
   draw() {
     image(setting.peanutButter, this.x, this.y,this.width, this.height );
   }
+=======
+function collidingObjects(){
+  
+>>>>>>> a4186532d2b6ce50cb7282b0ccf7ae55609b84d0
 }
 
 // function stackMovement() {
