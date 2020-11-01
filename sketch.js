@@ -77,7 +77,7 @@ function draw() {
   text('SCORE:', 425, 45);
   text(scoreTracker, 535, 45);
 
-  // falling foods for-loop
+  // falling foods
   for(let food of foods) {
     food.draw();
     food.update();
@@ -102,8 +102,75 @@ function mousePressed() {
   scoreTracker++;
 }
 
+<<<<<<< HEAD
+function keyPressed() {
+  if(keyCode === SHIFT) {
+    addAFood();
+  }
+}
+
+function addAFood() {
+  if (random(['bread', 'jelly', 'peanutButter']) == 'bread') {
+    let food1 = new Bread(random(0, 530), -20 , 125, 50);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter']) == 'jelly') {
+    let food1 = new Jelly(random(0, 530), -20, 135, 50);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter']) == 'peanutButter') {
+    let food1 = new PeanutButter(random(0, 530), -20, 115, 50);
+    foods.push(food1);
+  }
+}    
+
+class Bread {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+  update() {
+    this.y += 1.25;
+  }
+  draw() {
+    image(setting.bread, this.x, this.y, this.width, this.height);
+  }
+} 
+      
+class Jelly {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+  update() {
+    this.y += 1.25;
+  }
+  draw() {
+    image(setting.jelly, this.x, this.y, this.width, this.height);
+  }
+}
+       
+class PeanutButter {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+  update() {
+    this.y += 1.25;
+  }
+  draw() {
+    image(setting.peanutButter, this.x, this.y,this.width, this.height );
+  }
+=======
 function collidingObjects(){
   
+>>>>>>> a4186532d2b6ce50cb7282b0ccf7ae55609b84d0
 }
 
 // function stackMovement() {
