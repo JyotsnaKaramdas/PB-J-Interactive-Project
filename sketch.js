@@ -74,8 +74,8 @@ function draw() {
   fill('black');
   textSize(30);
   textFont('Itim');
-  text('SCORE:', 445, 45);
-  text(scoreTracker, 555, 45);
+  text('SCORE:', 425, 45);
+  text(scoreTracker, 535, 45);
 
   // falling foods for-loop
   for(let food of foods) {
