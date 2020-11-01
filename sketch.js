@@ -2,7 +2,7 @@
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
-  sandwich: ['bread', 'jelly', 'peanutButter']
+  sandwich: ['bread', 'jelly', 'peanutButter','mustard','ketchup']
 }
 
 // gradientConstants
@@ -15,6 +15,12 @@ let dy = 0;
 
 // falling foods
 let foods = [];
+
+var stack= [];
+
+var game;
+var Condiments;
+
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -37,6 +43,16 @@ function setup() {
   // define gradientColors
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
+
+  game = new Condiments(random(width), -20);
+  stack.push(game);
+
+  
+
+  condimentFormation();
+  stackMovement();
+  condimentMovement();
+  
 
   // define movingGradientVariables 
   x = 0;
@@ -62,6 +78,8 @@ function draw() {
   textFont('Times New Roman');
   text('SCORE:', 410, 35);
   text(scoreTracker, 550, 35);
+
+
 
   // falling foods for-loop
   for(let food of foods) {
@@ -181,4 +199,33 @@ class Ketchup {
 // mouse interaction for score tracker
 function mousePressed() {
   scoreTracker++;
+}
+
+function stackMovement() {
+
+  for (var i= stack.length -1; i>=0; i++) {
+
+    stack[i].update();
+
+    if (stack[i-1] !=null)
+      stack[i].moveTo(stack[i-1].position);
+
+    }
+
+}
+
+for (var i=0; i<stack.length; i++) {
+  stack[i]=draw();
+}
+
+if (stack.length-1 >scoreTracker) {
+  scoreTracker++;
+}
+
+function condimentFormation() {
+  for (var i=0; i<toppings.length; i++) {
+    Condiments[i].update();
+    Condiments[i.draw()]
+
+  }
 }
