@@ -102,6 +102,10 @@ function mousePressed() {
   scoreTracker++;
 }
 
+function collidingObjects(){
+  
+}
+
 // function stackMovement() {
 //   for (let i = stack.length - 1; i >= 0; i++) {
 //     stack[i].update();
