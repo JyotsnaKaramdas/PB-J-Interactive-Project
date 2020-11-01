@@ -83,6 +83,27 @@ function draw() {
     food.update();
   }
 }
+function verticalGradient(x, y, w, h, c1, c2, axis) {
+  noFill();
+
+  if (axis === Y_AXIS) {
+    for (let i = y; i <= y + h; i ++) {
+      let inter = map(i, y, y + h, 0, 1);
+      let c = lerpColor(c1, c2,inter);
+      stroke(c);
+      line(x, i, x + w, i);
+    }
+  }
+}
+
+function mousePressed() {
+  scoreTracker++;
+}
+ 
+
+
+
+
 function keyPressed() {
 
   if(keyCode === SHIFT) {
@@ -167,23 +188,10 @@ function keyPressed() {
 
 
 
-function verticalGradient(x, y, w, h, c1, c2, axis) {
-  noFill();
 
-  if (axis === Y_AXIS) {
-    for (let i = y; i <= y + h; i ++) {
-      let inter = map(i, y, y + h, 0, 1);
-      let c = lerpColor(c1, c2,inter);
-      stroke(c);
-      line(x, i, x + w, i);
-    }
-  }
-}
  
 // mouse interaction for score tracker
-function mousePressed() {
-  scoreTracker++;
-}
+
 
 function collidingObjects(){
   
