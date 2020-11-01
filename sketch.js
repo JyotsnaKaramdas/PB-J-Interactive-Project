@@ -21,7 +21,6 @@ let stack= [];
 let game;
 let condiments;
 
-
 function preload() {
   setting.park = loadImage('images/park.png');
   setting.blanket = loadImage('images/blanket.png');
@@ -43,17 +42,15 @@ function setup() {
   // define gradientColors
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
-
+  
+  // condiments.js
   game = new condiments(random(width), -20);
   stack.push(game);
-
-  
 
   condimentFormation();
   stackMovement();
   condimentMovement();
   
-
   // define movingGradientVariables 
   x = 0;
   y = -2900;
@@ -78,8 +75,6 @@ function draw() {
   textFont('Times New Roman');
   text('SCORE:', 410, 35);
   text(scoreTracker, 550, 35);
-
-
 
   // falling foods for-loop
   for(let food of foods) {
@@ -107,94 +102,6 @@ function keyPressed() {
     addAFood();
   }
 }
-
-// function addAFood() {
-//   if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'bread') {
-//     let food1 = new Bread(random(width), -20);
-//     foods.push(food1);
-//   }
-//   if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'jelly') {
-//     let food1 = new Jelly(random(width), -20);
-//     foods.push(food1);
-//   }
-//   if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'peanutButter') {
-//     let food1 = new PeanutButter(random(width), -20);
-//     foods.push(food1);
-//   }
-//   if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'mustard') {
-//     let food1 = new Mustard(random(width), -20);
-//     foods.push(food1);
-//   }
-//   if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'ketchup') {
-//     let food1 = new Ketchup(random(width), -20);
-//     foods.push(food1);
-//   }
-// }
-
-// class Bread {
-//   constructor(x, y) {
-//    this.x = x;
-//    this.y = y;
-//  }
-//  update() {
-//    this.y += 1.25;
-//  }
-//  draw() {
-//   image(setting.bread, this.x, this.y, 125, 50);
-//  }
-// } 
- 
-// class Jelly {
-//   constructor(x, y) {
-//    this.x = x;
-//    this.y = y;
-//  }
-//  update() {
-//    this.y += 1.25;
-//  }
-//  draw() {
-//   image(setting.jelly, this.x, this.y, 125, 50);
-//  }
-// }
- 
-// class PeanutButter {
-//   constructor(x, y) {
-//    this.x = x;
-//    this.y = y;
-//  }
-//  update() {
-//    this.y += 1.25;
-//  }
-//  draw() {
-//   image(setting.peanutButter, this.x, this.y, 125, 50);
-//  }
-// }
-
-// class Mustard {
-//   constructor(x, y) {
-//    this.x = x;
-//    this.y = y;
-//  }
-//  update() {
-//    this.y += 1.25;
-//  }
-//  draw() {
-//   image(setting.mustard, this.x, this.y, 125, 50);
-//  }
-// }
-
-// class Ketchup {
-//   constructor(x, y) {
-//    this.x = x;
-//    this.y = y;
-//  }
-//  update() {
-//    this.y += 1.25;
-//  }
-//  draw() {
-//   image(setting.ketchup, this.x, this.y, 125, 50);
-//  }
-// }
  
 // mouse interaction for score tracker
 function mousePressed() {
@@ -202,30 +109,25 @@ function mousePressed() {
 }
 
 function stackMovement() {
-
-  for (var i= stack.length -1; i>=0; i++) {
-
+  for (let i = stack.length - 1; i >= 0; i++) {
     stack[i].update();
-
-    if (stack[i-1] !=null)
-      stack[i].moveTo(stack[i-1].position);
-
+    if (stack[i - 1] != null) {
+      stack[i].moveTo(stack[i - 1].position);
     }
-
+  }
 }
 
-for (var i=0; i<stack.length; i++) {
-  stack[i]=draw();
+for (let i = 0; i < stack.length; i++) {
+  stack[i] = draw();
 }
 
-if (stack.length-1 >scoreTracker) {
+if (stack.length - 1 > scoreTracker) {
   scoreTracker++;
 }
 
 function condimentFormation() {
-  for (var i=0; i<toppings.length; i++) {
+  for (var i = 0; i < toppings.length; i++) {
     condiments[i].update();
     condiments[i].draw()
-
   }
 }
