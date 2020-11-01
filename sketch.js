@@ -225,7 +225,7 @@ if (stack.length-1 >scoreTracker) {
 function condimentFormation() {
   for (var i=0; i<toppings.length; i++) {
     condiments[i].update();
-    condiments[i.draw()]
+    condiments[i].draw()
 
   }
 }
