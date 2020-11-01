@@ -1,3 +1,5 @@
+
+
 for(let food of foods) {
   food.draw();
   food.update();
