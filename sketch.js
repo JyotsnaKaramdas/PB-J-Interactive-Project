@@ -16,10 +16,10 @@ let dy = 0;
 // falling foods
 let foods = [];
 
-var stack= [];
+let stack= [];
 
-var game;
-var condiments;
+let game;
+let condiments;
 
 
 function preload() {
