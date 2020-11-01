@@ -19,7 +19,7 @@ let foods = [];
 var stack= [];
 
 var game;
-var Condiments;
+var condiments;
 
 
 function preload() {
@@ -44,7 +44,7 @@ function setup() {
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
 
-  game = new Condiments(random(width), -20);
+  game = new condiments(random(width), -20);
   stack.push(game);
 
   

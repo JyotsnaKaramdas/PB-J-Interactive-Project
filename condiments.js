@@ -1,4 +1,4 @@
-function Condiments() {
+function condiments() {
     
     function keyPressed() {
         if(keyCode === SHIFT) {
