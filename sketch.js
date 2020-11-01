@@ -16,10 +16,10 @@ let dy = 0;
 // falling foods
 let foods = [];
 
-let stack= [];
+// let stack= [];
 
-let game;
-let condiments;
+// let game;
+// let condiments;
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -44,12 +44,12 @@ function setup() {
   c2 = color(195, 100, 100); // bottom color
   
   // condiments.js
-  game = new condiments(random(width), -20);
-  stack.push(game);
+  // game = new condiments(random(width), -20);
+  // stack.push(game);
 
-  condimentFormation();
-  stackMovement();
-  condimentMovement();
+  // condimentFormation();
+  // stackMovement();
+  // condimentMovement();
   
   // define movingGradientVariables 
   x = 0;
@@ -58,23 +58,24 @@ function setup() {
 
 function draw() {
   // backgroundColorChanges 
-  speed = 0.05;
+  speed = 0.005;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
 
   // park setting images
-  image(setting.park, -100, 100 + frameCount * 0.05, 770, 600);
-  image(setting.blanket, 50, 500 + frameCount * 0.05, 500, 130);
-  image(setting.basket, 130, 520 + frameCount * 0.05, 90, 80);
+  image(setting.park, -100, 100 + frameCount * 0.005, 770, 600);
+  image(setting.blanket, 50, 500 + frameCount * 0.005, 500, 130);
+  image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (bottom bread slice)
-  image(setting.bread, mouseX, 580 + frameCount * 0.05, 125, 50);
+  image(setting.bread, mouseX, 580 + frameCount * 0.0015, 125, 50);
 
   // score tracker properties 
-  textSize(35);
-  textFont('Times New Roman');
-  text('SCORE:', 410, 35);
-  text(scoreTracker, 550, 35);
+  fill('black');
+  textSize(30);
+  textFont('Itim');
+  text('SCORE:', 445, 45);
+  text(scoreTracker, 555, 45);
 
   // falling foods for-loop
   for(let food of foods) {
@@ -95,39 +96,32 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
     }
   }
 }
-
-// keyboard interaction for falling objects 
-function keyPressed() {
-  if(keyCode === SHIFT) {
-    addAFood();
-  }
-}
  
 // mouse interaction for score tracker
 function mousePressed() {
   scoreTracker++;
 }
 
-function stackMovement() {
-  for (let i = stack.length - 1; i >= 0; i++) {
-    stack[i].update();
-    if (stack[i - 1] != null) {
-      stack[i].moveTo(stack[i - 1].position);
-    }
-  }
-}
+// function stackMovement() {
+//   for (let i = stack.length - 1; i >= 0; i++) {
+//     stack[i].update();
+//     if (stack[i - 1] != null) {
+//       stack[i].moveTo(stack[i - 1].position);
+//     }
+//   }
+// }
 
-for (let i = 0; i < stack.length; i++) {
-  stack[i] = draw();
-}
+// for (let i = 0; i < stack.length; i++) {
+//   stack[i] = draw();
+// }
 
-if (stack.length - 1 > scoreTracker) {
-  scoreTracker++;
-}
+// if (stack.length - 1 > scoreTracker) {
+//   scoreTracker++;
+// }
 
-function condimentFormation() {
-  for (var i = 0; i < toppings.length; i++) {
-    condiments[i].update();
-    condiments[i].draw()
-  }
-}
+// function condimentFormation() {
+//   for (var i = 0; i < toppings.length; i++) {
+//     condiments[i].update();
+//     condiments[i].draw()
+//   }
+// }
