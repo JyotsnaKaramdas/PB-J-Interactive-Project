@@ -107,15 +107,15 @@ function keyPressed() {
 
 function addAFood() {
   if (random(foodType) == 'bread') {
-    let food1 = new Bread(random(width), -20 , 135, 50);
+    let food1 = new Bread(random(0, 500), random(-50, 0) , 135, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'jelly') {
-    let food1 = new Jelly(random(width), -20, 135, 50);
+    let food1 = new Jelly(random(0, 500), random(-50, 0), 135, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'peanutButter') {
-    let food1 = new PeanutButter(random(width), -20, 115, 50);
+    let food1 = new PeanutButter(random(0, 500), random(-50, 0), 115, 50);
     foods.push(food1);
   }
 }
@@ -128,7 +128,7 @@ class Bread {
     this.height = h;
   }
   update() {
-    this.y += 1.25;
+    this.y += 2.5;
   }
   draw() {
     image(setting.bread, this.x, this.y, this.width, this.height);
@@ -143,7 +143,7 @@ class Jelly {
     this.height = h;
   }
   update() {
-    this.y += 1.25;
+    this.y += 2.5;
   }
   draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
@@ -158,7 +158,7 @@ class PeanutButter {
     this.height = h;
   } 
   update() {
-    this.y += 1.25;
+    this.y += 2.5;
   }
   draw() {
     image(setting.peanutButter, this.x, this.y, this.width, this.height);
