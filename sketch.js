@@ -2,7 +2,7 @@
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
-  sandwich: ['bread', 'jelly', 'peanutButter','mustard','ketchup']
+  sandwich: ['bread', 'jelly', 'peanutButter']
 }
 
 // gradientConstants
@@ -18,6 +18,10 @@ let foods = [];
 
 let stack= [];
 
+
+
+
+
 // let game;
 // let condiments;
 
@@ -28,8 +32,7 @@ function preload() {
   setting.bread = loadImage('images/bread.png');
   setting.jelly = loadImage('images/jelly.png');
   setting.peanutButter = loadImage('images/peanutButter.png');
-  setting.mustard = loadImage('images/mustard.png');
-  setting.ketchup = loadImage('images/ketchup.png');
+  
 
   scoreTracker = 0;
 }
@@ -115,27 +118,21 @@ function keyPressed() {
   
   
   function addAFood() {
-    if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'bread') {
+    if (random(['bread', 'jelly', 'peanutButter']) == 'bread') {
       let food1 = new Bread(random(width), -20 ,135, 50);
       foods.push(food1);
     }
-    if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'jelly') {
+    if (random(['bread', 'jelly', 'peanutButter']) == 'jelly') {
       let food1 = new Jelly(random(width), -20,135, 50);
       foods.push(food1);
     }
-    if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'peanutButter') {
+    if (random(['bread', 'jelly', 'peanutButter']) == 'peanutButter') {
       let food1 = new PeanutButter(random(width), -20,135, 50);
       foods.push(food1);
     }
-    if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'mustard') {
-      let food1 = new Mustard(random(width), -20,135, 50);
-      foods.push(food1);
+   
     }
-    if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'ketchup') {
-      let food1 = new Ketchup(random(width), -20,135, 50);
-      foods.push(food1);
-    }
-  }
+  
   
 
   
