@@ -8,4 +8,3 @@ module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
 
 Anna Harbeck and Jyotsna Karamdas
 
-### Description
