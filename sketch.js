@@ -15,6 +15,7 @@ let dy = 0;
 
 // falling foods
 let foods = [];
+let foodType = ['bread', 'jelly', 'peanutButter']
 
 let stack= [];
 
@@ -105,16 +106,16 @@ function keyPressed() {
 }
 
 function addAFood() {
-  if (random(['bread', 'jelly', 'peanutButter']) == 'bread') {
-    let food1 = new Bread(random(width), -20 , 135, 50);
+  if (random(foodType) == 'bread') {
+    let food1 = new Bread(random(0, 490), -20 , 125, 50);
     foods.push(food1);
   }
-  if (random(['bread', 'jelly', 'peanutButter']) == 'jelly') {
-    let food1 = new Jelly(random(width), -20, 135, 50);
+  if (random(foodType) == 'jelly') {
+    let food1 = new Jelly(random(0, 490), -20, 135, 50);
     foods.push(food1);
   }
-  if (random(['bread', 'jelly', 'peanutButter']) == 'peanutButter') {
-    let food1 = new PeanutButter(random(width), -20, 115, 50);
+  if (random(foodType) == 'peanutButter') {
+    let food1 = new PeanutButter(random(0, 490), -20, 115, 50);
     foods.push(food1);
   }
 }
