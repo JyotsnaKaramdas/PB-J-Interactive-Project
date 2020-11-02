@@ -17,7 +17,7 @@ let dy = 0;
 let foods = [];
 let foodType = ['bread', 'jelly', 'peanutButter']
 
-let stack= [];
+let stack = [];
 
 // let game;
 // let condiments;
@@ -107,15 +107,15 @@ function keyPressed() {
 
 function addAFood() {
   if (random(foodType) == 'bread') {
-    let food1 = new Bread(random(0, 490), -20 , 125, 50);
+    let food1 = new Bread(random(width), -20 , 135, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'jelly') {
-    let food1 = new Jelly(random(0, 490), -20, 135, 50);
+    let food1 = new Jelly(random(width), -20, 135, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'peanutButter') {
-    let food1 = new PeanutButter(random(0, 490), -20, 115, 50);
+    let food1 = new PeanutButter(random(width), -20, 115, 50);
     foods.push(food1);
   }
 }
