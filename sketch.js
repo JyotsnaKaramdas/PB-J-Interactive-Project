@@ -18,10 +18,6 @@ let foods = [];
 
 let stack= [];
 
-
-
-
-
 // let game;
 // let condiments;
 
@@ -32,7 +28,6 @@ function preload() {
   setting.bread = loadImage('images/bread.png');
   setting.jelly = loadImage('images/jelly.png');
   setting.peanutButter = loadImage('images/peanutButter.png');
-  
 
   scoreTracker = 0;
 }
@@ -102,106 +97,83 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
 function mousePressed() {
   scoreTracker++;
 }
- 
-
-
-
 
 function keyPressed() {
-
   if(keyCode === SHIFT) {
       addAFood();
-    }
+  }
 }
 
+function addAFood() {
+  if (random(['bread', 'jelly', 'peanutButter']) == 'bread') {
+    let food1 = new Bread(random(width), -20 , 135, 50);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter']) == 'jelly') {
+    let food1 = new Jelly(random(width), -20, 135, 50);
+    foods.push(food1);
+  }
+  if (random(['bread', 'jelly', 'peanutButter']) == 'peanutButter') {
+    let food1 = new PeanutButter(random(width), -20, 115, 50);
+    foods.push(food1);
+  }
+}
 
-  
-  
-  function addAFood() {
-    if (random(['bread', 'jelly', 'peanutButter']) == 'bread') {
-      let food1 = new Bread(random(width), -20 ,135, 50);
-      foods.push(food1);
-    }
-    if (random(['bread', 'jelly', 'peanutButter']) == 'jelly') {
-      let food1 = new Jelly(random(width), -20,135, 50);
-      foods.push(food1);
-    }
-    if (random(['bread', 'jelly', 'peanutButter']) == 'peanutButter') {
-      let food1 = new PeanutButter(random(width), -20,135, 50);
-      foods.push(food1);
-    }
-   
-    }
-  
-  
-
-  
-  class Bread {
-    constructor(x, y,w,h) {
-     this.x = x;
-     this.y = y;
-     this.width=w
-     this.height=h
-
-   }
-   update() {
-     this.y += 1.25;
-   }
-   draw() {
+class Bread {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+  update() {
+    this.y += 1.25;
+  }
+  draw() {
     image(setting.bread, this.x, this.y, this.width, this.height);
-   }
-  } 
-   
-  class Jelly {
-    constructor(x, y,w,h) {
-     this.x = x;
-     this.y = y;
-     this.width=w
-     this.height=h
-
-   }
-   update() {
-     this.y += 1.25;
-   }
-   draw() {
+  }
+} 
+  
+class Jelly {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+  update() {
+    this.y += 1.25;
+  }
+  draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
-   }
   }
+}
    
-  class PeanutButter {
-    constructor(x, y,w,h) {
-     this.x = x;
-     this.y = y;
-     this.width=w
-     this.height=h
-   }
-   update() {
-     this.y += 1.25;
-   }
-   draw() {
-    image(setting.peanutButter, this.x, this.y,this.width, this.height );
-   }
+class PeanutButter {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  } 
+  update() {
+    this.y += 1.25;
   }
-
-
-
-
+  draw() {
+    image(setting.peanutButter, this.x, this.y, this.width, this.height);
+  }
+}
  
 // mouse interaction for score tracker
-
 p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
   if (x+w>=w2 &&
       x<=x2+w2 &&
       y+h>=y2 &&
-      y<=y2+h2)  {
+      y<=y2+h2) {
         return true;
-      }
+  }
       return false;
-
-};
-
-
-
+}
 
 // function stackMovement() {
 //   for (let i = stack.length - 1; i >= 0; i--) {
