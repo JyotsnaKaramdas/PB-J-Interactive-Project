@@ -42,13 +42,14 @@ function setup() {
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
   
-  // condiments.js
+  
   // game = new condiments(random(width), -20);
   // stack.push(game);
 
-  // condimentFormation();
-  // stackMovement();
-  // condimentMovement();
+  //condimentFormation();
+  //stackMovement();
+  //condimentMovement();
+  //pbjSandwich();
   
   // define movingGradientVariables 
   x = 0;
@@ -107,25 +108,27 @@ function keyPressed() {
 
 function addAFood() {
   if (random(foodType) == 'bread') {
-    let food1 = new Bread(random(0, 500), random(-50, 0) , 135, 50);
+    let food1 = new Bread(random(0, 500), random(-50, 0) , 135, 50, 135, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'jelly') {
-    let food1 = new Jelly(random(0, 500), random(-50, 0), 135, 50);
+    let food1 = new Jelly(random(0, 500), random(-50, 0), 135, 50, 135, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'peanutButter') {
-    let food1 = new PeanutButter(random(0, 500), random(-50, 0), 115, 50);
+    let food1 = new PeanutButter(random(0, 500), random(-50, 0), 115, 50, 135, 50);
     foods.push(food1);
   }
 }
 
 class Bread {
-  constructor(x, y, w, h) {
+  constructor(x, y, w, h,w2,h2) {
     this.x = x;
     this.y = y;
     this.width = w;
     this.height = h;
+    this.width2=w2;
+    this.height2=h2;
   }
   update() {
     this.y += 2.0;
@@ -136,11 +139,13 @@ class Bread {
 } 
   
 class Jelly {
-  constructor(x, y, w, h) {
+  constructor(x, y, w, h,w2,h2) {
     this.x = x;
     this.y = y;
     this.width = w;
     this.height = h;
+    this.width2=w2;
+    this.height2=h2;
   }
   update() {
     this.y += 2.0;
@@ -151,17 +156,19 @@ class Jelly {
 }
    
 class PeanutButter {
-  constructor(x, y, w, h) {
+  constructor(x, y, w, h,w2,h2) {
     this.x = x;
     this.y = y;
     this.width = w;
     this.height = h;
+    this.width2=w2;
+    this.height2=h2;
   } 
   update() {
     this.y += 2.0;
   }
   draw() {
-    image(setting.peanutButter, this.x, this.y, this.width, this.height);
+    image(setting.peanutButter, this.x, this.y, this.width, this.height)
   }
 }
  
@@ -177,6 +184,10 @@ p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
       return false;
 }
 
+function pbjSandwich() {
+
+}
+
 
 
 function stackMovement() {
@@ -188,17 +199,17 @@ function stackMovement() {
   }
 }
 
-// for (let i = 0; i < stack.length; i++) {
-//   stack[i] = draw();
-// }
+for (let i = 0; i < stack.length; i++) {
+  stack[i] = draw();
+}
 
 // if (stack.length - 1 > scoreTracker) {
 //   scoreTracker++;
 // }
 
-// function condimentFormation() {
-//   for (var i = 0; i < toppings.length; i++) {
-//     condiments[i].update();
-//     condiments[i].draw()
-//   }
-// }
+function condimentFormation() {
+  for (var i = 0; i < sandwich.length; i++) {
+    stack[i].update();
+    stack[i].draw()
+  }
+}
