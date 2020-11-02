@@ -1,3 +1,4 @@
+ 
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
@@ -15,7 +16,7 @@ let dy = 0;
 // falling foods
 let foods = [];
 
-// let stack= [];
+let stack= [];
 
 // let game;
 // let condiments;
@@ -115,23 +116,23 @@ function keyPressed() {
   
   function addAFood() {
     if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'bread') {
-      let food1 = new Bread(random(width), -20 ,125, 50);
+      let food1 = new Bread(random(width), -20 ,135, 50);
       foods.push(food1);
     }
     if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'jelly') {
-      let food1 = new Jelly(random(width), -20,125, 50);
+      let food1 = new Jelly(random(width), -20,135, 50);
       foods.push(food1);
     }
     if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'peanutButter') {
-      let food1 = new PeanutButter(random(width), -20,125, 50);
+      let food1 = new PeanutButter(random(width), -20,135, 50);
       foods.push(food1);
     }
     if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'mustard') {
-      let food1 = new Mustard(random(width), -20,125, 50);
+      let food1 = new Mustard(random(width), -20,135, 50);
       foods.push(food1);
     }
     if (random(['bread', 'jelly', 'peanutButter', 'mustard', 'ketchup']) == 'ketchup') {
-      let food1 = new Ketchup(random(width), -20,125, 50);
+      let food1 = new Ketchup(random(width), -20,135, 50);
       foods.push(food1);
     }
   }
@@ -191,13 +192,22 @@ function keyPressed() {
  
 // mouse interaction for score tracker
 
+p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
+  if (x+w>=w2 &&
+      x<=x2+w2 &&
+      y+h>=y2 &&
+      y<=y2+h2)  {
+        return true;
+      }
+      return false;
 
-function collidingObjects(){
-  
-}
+};
+
+
+
 
 // function stackMovement() {
-//   for (let i = stack.length - 1; i >= 0; i++) {
+//   for (let i = stack.length - 1; i >= 0; i--) {
 //     stack[i].update();
 //     if (stack[i - 1] != null) {
 //       stack[i].moveTo(stack[i - 1].position);
