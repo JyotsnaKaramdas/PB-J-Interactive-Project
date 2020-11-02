@@ -171,6 +171,7 @@ p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
       x<=x2+w2 &&
       y+h>=y2 &&
       y<=y2+h2) {
+        //distance is less than the radius=collision
         return true;
   }
       return false;
@@ -178,14 +179,14 @@ p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
 
 
 
-// function stackMovement() {
-//   for (let i = stack.length - 1; i >= 0; i--) {
-//     stack[i].update();
-//     if (stack[i - 1] != null) {
-//       stack[i].moveTo(stack[i - 1].position);
-//     }
-//   }
-// }
+function stackMovement() {
+  for (let i = stack.length - 1; i >= 0; i--) {
+    stack[i].update();
+    if (stack[i - 1] != null) {
+      stack[i].moveTo(stack[i - 1].position);
+    }
+  }
+}
 
 // for (let i = 0; i < stack.length; i++) {
 //   stack[i] = draw();
