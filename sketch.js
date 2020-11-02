@@ -128,7 +128,7 @@ class Bread {
     this.height = h;
   }
   update() {
-    this.y += 2.5;
+    this.y += 2.0;
   }
   draw() {
     image(setting.bread, this.x, this.y, this.width, this.height);
@@ -143,7 +143,7 @@ class Jelly {
     this.height = h;
   }
   update() {
-    this.y += 2.5;
+    this.y += 2.0;
   }
   draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
@@ -158,14 +158,14 @@ class PeanutButter {
     this.height = h;
   } 
   update() {
-    this.y += 2.5;
+    this.y += 2.0;
   }
   draw() {
     image(setting.peanutButter, this.x, this.y, this.width, this.height);
   }
 }
  
-// mouse interaction for score tracker
+//object collision detector
 p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
   if (x+w>=w2 &&
       x<=x2+w2 &&
@@ -175,6 +175,8 @@ p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
   }
       return false;
 }
+
+
 
 // function stackMovement() {
 //   for (let i = stack.length - 1; i >= 0; i--) {
