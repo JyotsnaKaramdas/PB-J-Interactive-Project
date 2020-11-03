@@ -19,7 +19,7 @@ let foodType = ['bread', 'jelly', 'peanutButter']
 
 let stack = [];
 
-var f=400;
+var f=500;
 
 
 // let game;
@@ -40,7 +40,7 @@ function setup() {
   createCanvas(600, 650);
   colorMode(HSB);
   angleMode(DEGREES);
-  fade=0
+  
 
   // define gradientColors
   c1 = color(285, 100, 30); // top color
