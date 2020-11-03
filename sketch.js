@@ -72,7 +72,10 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (bottom bread slice)
-  image(setting.bread, mouseX, 580 + frameCount * 0.0015, 125, 50);
+  image(setting.bread, mouseX, 580 + frameCount * 0.0015, 150, 50);
+  image(setting.jelly, mouseX, 575 + frameCount * 0.0015, 150, 50);
+  image(setting.peanutButter, mouseX, 569 + frameCount * 0.0015, 150, 50);
+  image(setting.bread, mouseX, 565 + frameCount * 0.0015, 150, 50);
 
   // score tracker properties 
   fill('black');
