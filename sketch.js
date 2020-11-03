@@ -63,9 +63,7 @@ function setup() {
     image(setting.jelly, mouseX, mouseY , 150, 50),  
     image(setting.peanutButter, mouseX, mouseY, 150, 50),  
     image(setting.bread, mouseX, mouseY , 150, 50));  
-  
-
-
+}
 
 function draw() {
   // backgroundColorChanges 
@@ -134,7 +132,6 @@ function getCondiments(player,condiment) {
     condiment.remove();
     scoreTracker+=1  
   }
-}
 }
 
 function keyPressed() {
