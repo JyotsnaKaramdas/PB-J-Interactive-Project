@@ -25,7 +25,7 @@ var f=500;
 
 // var condiments;
 // var player;
-var scoreTracker = 0;
+// var scoreTracker = 0;
 
 // let game;
 // let condiments;
@@ -36,9 +36,7 @@ function preload() {
   setting.basket = loadImage('images/basket.png');
   setting.bread = loadImage('images/bread.png');
   setting.jelly = loadImage('images/jelly.png');
-  setting.peanutButter = loadImage('images/peanutButter.png');
-
-  
+  setting.peanutButter = loadImage('images/peanutButter.png'); 
 }
 
 function setup() {
@@ -46,18 +44,13 @@ function setup() {
   colorMode(HSB);
   angleMode(DEGREES);
   
-
   // define gradientColors
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
   
-
-  
   // define movingGradientVariables 
   x = 0;
   y = -2900;
-
-  
   
   // condiments= new Group();
 
@@ -66,15 +59,12 @@ function setup() {
   //   var j =jelly(random(0, 500), random(-50, 0),135,50);
   //   condiments.add(p);
   //   condiments.add(j);
-  }
+}
     // player= (image(setting.bread, mouseX, mouseY, 150, 50),
     // image(setting.jelly, mouseX, mouseY , 150, 50),
     // image(setting.peanutButter, mouseX, mouseY, 150, 50),
     // image(setting.bread, mouseX, mouseY , 150, 50));
   
-
-
-
 function draw() {
   // backgroundColorChanges 
   speed = 0.005;
@@ -87,12 +77,10 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (sandwich)
-  
-  
   image(setting.bread, mouseX, mouseY , 150, 55);
-  image(setting.jelly, mouseX, mouseY , 150, 59);
-  image(setting.peanutButter, mouseX, mouseY, 150, 50);
-  image(setting.bread, mouseX, mouseY , 150, 20);
+  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
+  image(setting.peanutButter, mouseX, mouseY, 140, 45);
+  image(setting.bread, mouseX, mouseY - 20, 150, 55);
 
   // score tracker properties 
   // fill('black');
