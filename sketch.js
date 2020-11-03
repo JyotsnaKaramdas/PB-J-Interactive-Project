@@ -90,7 +90,6 @@ function draw() {
   // text(scoreTracker, 535, 45);
 
   //shift notification properties
-
   fill(255,f);
   noStroke();
   textSize(18);
@@ -106,12 +105,6 @@ function draw() {
   //     text('SCORE:', 425, 45);
       
   //   }
-
- 
-
-
-
-
 
   // falling foods for-loop
   for(let food of foods) {
@@ -130,25 +123,15 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
       line(x, i, x + w, i);
     }
   }
-    
-
     // function getCondiments(player,condiment) {
     //   condiment.remove();
     //   scoreTracker+=1
     // }
-
 }
-    
 
-
-
-
-
-
-
-function mousePressed() {
-  scoreTracker++;
-}
+// function mousePressed() {
+//   scoreTracker++;
+// }
 
 function keyPressed() {
   if(keyCode === SHIFT) {
@@ -177,7 +160,6 @@ class Bread {
     this.y = y;
     this.width = w;
     this.height = h;
-    
   }
   update() {
     this.y += 2.0;
@@ -192,8 +174,7 @@ class Jelly {
     this.x = x;
     this.y = y;
     this.width = w;
-    this.height = h;
-    
+    this.height = h; 
   }
   update() {
     this.y += 2.0;
@@ -209,7 +190,6 @@ class PeanutButter {
     this.y = y;
     this.width = w;
     this.height = h;
-    
   } 
   update() {
     this.y += 2.0;
@@ -230,8 +210,3 @@ class PeanutButter {
 //   }
 //       return false;
 // }
-
-
-
-
-
