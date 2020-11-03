@@ -77,8 +77,16 @@ function draw() {
   text('SCORE:', 425, 45);
   text(scoreTracker, 535, 45);
 
+  //shift notification properties
 
-  
+  fill('white');
+  textSize(18);
+  textFont('Itim');
+  text('Press SHIFT to start!',200,35);
+
+
+
+
 
   // falling foods for-loop
   for(let food of foods) {
