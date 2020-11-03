@@ -21,6 +21,11 @@ let stack = [];
 
 var f=500;
 
+//var condimentsCollected=0;
+
+var condiments;
+var player;
+var scoreTracker = 0;
 
 // let game;
 // let condiments;
@@ -33,7 +38,7 @@ function preload() {
   setting.jelly = loadImage('images/jelly.png');
   setting.peanutButter = loadImage('images/peanutButter.png');
 
-  scoreTracker = 0;
+  
 }
 
 function setup() {
@@ -46,19 +51,29 @@ function setup() {
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
   
-  
-  // game = new condiments(random(width), -20);
-  // stack.push(game);
 
-  //condimentFormation();
-  //stackMovement();
-  //condimentMovement();
-  //pbjSandwich();
   
   // define movingGradientVariables 
   x = 0;
   y = -2900;
-}
+
+  
+  
+  // condiments= new Group();
+
+  // for (var i=0; i<50;i++) {
+  //   var p = peanutButter(random(0, 500), random(-50, 0),135,50);
+  //   var j =jelly(random(0, 500), random(-50, 0),135,50);
+  //   condiments.add(p);
+  //   condiments.add(j);
+  }
+    // player= (image(setting.bread, mouseX, mouseY, 150, 50),
+    // image(setting.jelly, mouseX, mouseY , 150, 50),
+    // image(setting.peanutButter, mouseX, mouseY, 150, 50),
+    // image(setting.bread, mouseX, mouseY , 150, 50));
+  
+
+
 
 function draw() {
   // backgroundColorChanges 
@@ -71,11 +86,13 @@ function draw() {
   image(setting.blanket, 50, 500 + frameCount * 0.005, 500, 130);
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
-  // mouseX (bottom bread slice)
-  image(setting.bread, mouseX, 580 + frameCount * 0.0015, 150, 50);
-  image(setting.jelly, mouseX, 575 + frameCount * 0.0015, 150, 50);
-  image(setting.peanutButter, mouseX, 569 + frameCount * 0.0015, 150, 50);
-  image(setting.bread, mouseX, 565 + frameCount * 0.0015, 150, 50);
+  // mouseX (sandwich)
+  
+  
+  image(setting.bread, mouseX, mouseY , 150, 55);
+  image(setting.jelly, mouseX, mouseY , 150, 59);
+  image(setting.peanutButter, mouseX, mouseY, 150, 50);
+  image(setting.bread, mouseX, mouseY , 150, 20);
 
   // score tracker properties 
   fill('black');
@@ -94,6 +111,14 @@ function draw() {
   if (f>0) {
     f--;
   }
+  // player.velocity.x=(mouseX-player.position.x)*0.1;
+  //   player.overlap(condiments,getCondiments);
+
+  //   if (condiments.length>0) {
+  //     text('SCORE:', 425, 45);
+      
+  //   }
+
  
 
 
@@ -117,7 +142,21 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
       line(x, i, x + w, i);
     }
   }
+    
+
+    // function getCondiments(player,condiment) {
+    //   condiment.remove();
+    //   scoreTracker+=1
+    // }
+
 }
+    
+
+
+
+
+
+
 
 function mousePressed() {
   scoreTracker++;
@@ -145,13 +184,12 @@ function addAFood() {
 }
 
 class Bread {
-  constructor(x, y, w, h,w2,h2) {
+  constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.width = w;
     this.height = h;
-    this.width2=w2;
-    this.height2=h2;
+    
   }
   update() {
     this.y += 2.0;
@@ -162,13 +200,12 @@ class Bread {
 } 
   
 class Jelly {
-  constructor(x, y, w, h,w2,h2) {
+  constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.width = w;
     this.height = h;
-    this.width2=w2;
-    this.height2=h2;
+    
   }
   update() {
     this.y += 2.0;
@@ -179,13 +216,12 @@ class Jelly {
 }
    
 class PeanutButter {
-  constructor(x, y, w, h,w2,h2) {
+  constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.width = w;
     this.height = h;
-    this.width2=w2;
-    this.height2=h2;
+    
   } 
   update() {
     this.y += 2.0;
@@ -195,44 +231,19 @@ class PeanutButter {
   }
 }
  
-//object collision detector
-p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
-  if (x+w>=w2 &&
-      x<=x2+w2 &&
-      y+h>=y2 &&
-      y<=y2+h2) {
-        //distance is less than the radius=collision
-        return true;
-  }
-      return false;
-}
-
-function pbjSandwich() {
-
-}
-
-
-
-function stackMovement() {
-  for (let i = stack.length - 1; i >= 0; i--) {
-    stack[i].update();
-    if (stack[i - 1] != null) {
-      stack[i].moveTo(stack[i - 1].position);
-    }
-  }
-}
-
-for (let i = 0; i < stack.length; i++) {
-  stack[i] = draw();
-}
-
-// if (stack.length - 1 > scoreTracker) {
-//   scoreTracker++;
+// //object collision detector
+// p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
+//   if (x+w>=w2 &&
+//       x<=x2+w2 &&
+//       y+h>=y2 &&
+//       y<=y2+h2) {
+//         //distance is less than the radius=collision
+//         return true;
+//   }
+//       return false;
 // }
 
-function condimentFormation() {
-  for (var i = 0; i < sandwich.length; i++) {
-    stack[i].update();
-    stack[i].draw()
-  }
-}
+
+
+
+
