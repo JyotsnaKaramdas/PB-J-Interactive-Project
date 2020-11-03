@@ -19,6 +19,9 @@ let foodType = ['bread', 'jelly', 'peanutButter']
 
 let stack = [];
 
+var f=400;
+
+
 // let game;
 // let condiments;
 
@@ -37,6 +40,7 @@ function setup() {
   createCanvas(600, 650);
   colorMode(HSB);
   angleMode(DEGREES);
+  fade=0
 
   // define gradientColors
   c1 = color(285, 100, 30); // top color
@@ -79,10 +83,15 @@ function draw() {
 
   //shift notification properties
 
-  fill('white');
+  fill(255,f);
+  noStroke();
   textSize(18);
   textFont('Itim');
   text('Press SHIFT to start!',200,35);
+  if (f>0) {
+    f--;
+  }
+ 
 
 
 
