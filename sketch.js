@@ -21,11 +21,11 @@ let foodType = ['bread', 'jelly', 'peanutButter']
 let f=500; 
 
 // code that needs to be debugged 
-let condimentsCollected=0; 
+// let condimentsCollected=0; 
 let condiments; 
 let player; 
 let scoreTracker = 0; 
-let game; 
+// let game; 
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -49,19 +49,24 @@ function setup() {
   x = 0;
   y = -2900;
   
-  condiments= new Group(); // comment 
 
-  for (var i=0; i<50;i++) { // comment 
-    var p = peanutButter(random(0, 500), random(-50, 0),135,50); // comment 
-    var j =jelly(random(0, 500), random(-50, 0),135,50); // comment 
-    condiments.add(p); // comment 
-    condiments.add(j); //comment 
+
+  // problematic code 
+  condiments= new Group();
+  for (var i=0; i<50;i++) { 
+    var p = peanutButter(random(0, 500), random(-50, 0),135,50);  
+    var j =jelly(random(0, 500), random(-50, 0),135,50); 
+    condiments.add(p);
+    condiments.add(j);
 }
-    player= (image(setting.bread, mouseX, mouseY, 150, 50), // comment 
-    image(setting.jelly, mouseX, mouseY , 150, 50), // comment 
-    image(setting.peanutButter, mouseX, mouseY, 150, 50), //comment 
-    image(setting.bread, mouseX, mouseY , 150, 50)); //comment 
+    player= (image(setting.bread, mouseX, mouseY, 150, 50),  
+    image(setting.jelly, mouseX, mouseY , 150, 50),  
+    image(setting.peanutButter, mouseX, mouseY, 150, 50),  
+    image(setting.bread, mouseX, mouseY , 150, 50));  
   
+
+
+
 function draw() {
   // backgroundColorChanges 
   speed = 0.005;
@@ -79,12 +84,12 @@ function draw() {
   image(setting.peanutButter, mouseX, mouseY, 140, 45);
   image(setting.bread, mouseX, mouseY - 20, 150, 55);
 
-  // score tracker properties  
-  fill('black'); // comment 
-  textSize(30); // comment 
-  textFont('Itim'); // comment 
-  text('SCORE:', 425, 45); // comment 
-  text(scoreTracker, 535, 45); // comment 
+  // // score tracker properties  
+  // fill('black'); 
+  // textSize(30); 
+  // textFont('Itim'); 
+  // text('SCORE:', 425, 45); 
+  // text(scoreTracker, 535, 45); 
 
   //shift notification properties
   fill(255,f);
@@ -96,11 +101,12 @@ function draw() {
     f--;
   }
   
-  player.velocity.x=(mouseX-player.position.x)*0.1; // comment 
-    player.overlap(condiments,getCondiments); // comment 
+  // problematic code
+  player.velocity.x=(mouseX-player.position.x)*0.1; 
+    player.overlap(condiments,getCondiments); 
 
-    if (condiments.length>0) { // comment 
-      text('SCORE:', 425, 45); // comment 
+    if (condiments.length>0) { 
+      text('SCORE:', 425, 45); 
     }
 
   // falling foods for-loop
@@ -109,6 +115,7 @@ function draw() {
     food.update();
   }
 }
+
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
@@ -121,16 +128,14 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
       line(x, i, x + w, i);
     }
   }
-    function getCondiments(player,condiment) { // comment
-      condiment.remove(); // comment
-      scoreTracker+=1 // comment 
-    }
+
+// call function in draw();
+function getCondiments(player,condiment) { 
+    condiment.remove();
+    scoreTracker+=1  
   }
 }
-
-// function mousePressed() {
-//   scoreTracker++;
-// }
+}
 
 function keyPressed() {
   if(keyCode === SHIFT) {
