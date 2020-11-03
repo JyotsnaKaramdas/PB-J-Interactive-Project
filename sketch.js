@@ -23,8 +23,8 @@ var f=500;
 
 //var condimentsCollected=0;
 
-var condiments;
-var player;
+// var condiments;
+// var player;
 var scoreTracker = 0;
 
 // let game;
@@ -95,11 +95,11 @@ function draw() {
   image(setting.bread, mouseX, mouseY , 150, 20);
 
   // score tracker properties 
-  fill('black');
-  textSize(30);
-  textFont('Itim');
-  text('SCORE:', 425, 45);
-  text(scoreTracker, 535, 45);
+  // fill('black');
+  // textSize(30);
+  // textFont('Itim');
+  // text('SCORE:', 425, 45);
+  // text(scoreTracker, 535, 45);
 
   //shift notification properties
 
