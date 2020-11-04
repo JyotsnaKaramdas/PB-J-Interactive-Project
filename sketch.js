@@ -1,4 +1,4 @@
-// preloadVariables 
+// preloadVariables
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
@@ -15,10 +15,10 @@ let dy = 0;
 
 // falling foods
 let foods = [];
-let foodType = ['bread', 'jelly', 'peanutButter']
+let foodType = ['bread', 'jelly', 'peanutButter'];
 
-// variable for disappearing text 
-let f=500; 
+// variable for disappearing text
+let f=500;
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -26,25 +26,25 @@ function preload() {
   setting.basket = loadImage('images/basket.png');
   setting.bread = loadImage('images/bread.png');
   setting.jelly = loadImage('images/jelly.png');
-  setting.peanutButter = loadImage('images/peanutButter.png'); 
+  setting.peanutButter = loadImage('images/peanutButter.png');
 }
 
 function setup() {
   createCanvas(600, 650);
   colorMode(HSB);
   angleMode(DEGREES);
-  
+
   // define gradientColors
   c1 = color(285, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
-  
-  // define movingGradientVariables 
+
+  // define movingGradientVariables
   x = 0;
   y = -2900;
 }
 
 function draw() {
-  // backgroundColorChanges 
+  // backgroundColorChanges
   speed = 0.005;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
@@ -55,31 +55,7 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (sandwich)
- 
-  image(setting.bread, mouseX, mouseY , 150, 55);
-  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
-  image(setting.peanutButter, mouseX, mouseY, 140, 45);
-  image(setting.bread, mouseX, mouseY - 20, 150, 55);
-
-
-      // image(setting.bread, mouseX, mouseY , 150*i, 55*i);
-      // image(setting.jelly, mouseX -15, mouseY - 10 , 175*i, 65*i);
-      // image(setting.peanutButter, mouseX, mouseY, 140*i, 45*i);
-      // image(setting.bread, mouseX, mouseY - 20, 150*i, 55*i);
-  }
-  
-
-
-
-
-  
-
-  // // score tracker properties  
-  // fill('black'); 
-  // textSize(30); 
-  // textFont('Itim'); 
-  // text('SCORE:', 425, 45); 
-  // text(scoreTracker, 535, 45); 
+  sandwich() ;
 
   //shift notification properties
   fill(255,f);
@@ -91,25 +67,15 @@ function draw() {
     f--;
   }
 
-  
-  // // problematic code
-  // player.velocity.x=(mouseX-player.position.x)*0.1; 
-  //   player.overlap(condiments,getCondiments); 
-
-  //   if (condiments.length>0) { 
-  //     text('SCORE:', 425, 45); 
-  //   }
-
   // falling foods for-loop
   for(let food of foods) {
     food.draw();
     food.update();
   }
-
+}
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
-
   if (axis === Y_AXIS) {
     for (let i = y; i <= y + h; i ++) {
       let inter = map(i, y, y + h, 0, 1);
@@ -161,22 +127,18 @@ class Bread {
   draw() {
     image(setting.bread, this.x, this.y, this.width, this.height);
   }
-} 
-  
+}
+
 class Jelly {
   constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.width = w;
-    this.height = h; 
+    this.height = h;
   }
   update() {
     this.y += 2.0;
-    
-       
-      
-}
-  
+  }
   draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
   }
@@ -188,7 +150,7 @@ class PeanutButter {
     this.y = y;
     this.width = w;
     this.height = h;
-  } 
+  }
   update() {
     this.y += 2.0;
   }
