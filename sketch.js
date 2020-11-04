@@ -67,6 +67,20 @@ function draw() {
     f--;
   }
 
+<<<<<<< HEAD
+=======
+
+
+  
+  // // problematic code
+  // player.velocity.x=(mouseX-player.position.x)*0.1; 
+  //   player.overlap(condiments,getCondiments); 
+
+  //   if (condiments.length>0) { 
+  //     text('SCORE:', 425, 45); 
+  //   }
+
+>>>>>>> 7ce2444c048213eeeb30f3f17b77bd6d0335dafb
   // falling foods for-loop
   for(let food of foods) {
     food.draw();
