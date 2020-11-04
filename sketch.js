@@ -48,7 +48,8 @@ function setup() {
   // define movingGradientVariables 
   x = 0;
   y = -2900;
-  
+
+
   // // problematic code 
   // condiments= new Group();
   // for (var i=0; i<50;i++) { 
@@ -75,10 +76,24 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (sandwich)
-  image(setting.bread, mouseX, mouseY , 150, 55);
-  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
-  image(setting.peanutButter, mouseX, mouseY, 140, 45);
-  image(setting.bread, mouseX, mouseY - 20, 150, 55);
+ 
+      image(setting.bread, mouseX, mouseY , 150, 55);
+      image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
+      image(setting.peanutButter, mouseX, mouseY, 140, 45);
+      image(setting.bread, mouseX, mouseY - 20, 150, 55);
+
+
+      // image(setting.bread, mouseX, mouseY , 150*i, 55*i);
+      // image(setting.jelly, mouseX -15, mouseY - 10 , 175*i, 65*i);
+      // image(setting.peanutButter, mouseX, mouseY, 140*i, 45*i);
+      // image(setting.bread, mouseX, mouseY - 20, 150*i, 55*i);
+  }
+  
+
+
+
+
+  
 
   // // score tracker properties  
   // fill('black'); 
@@ -110,7 +125,7 @@ function draw() {
     food.draw();
     food.update();
   }
-}
+
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
@@ -177,11 +192,20 @@ class Jelly {
   }
   update() {
     this.y += 2.0;
-  }
+    // if (this.height>windowHeight) {
+    //   for (let i=1; i+=5; );
+       
+      
+      
+    }
+  
   draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
   }
 }
+
+
+  
    
 class PeanutButter {
   constructor(x, y, w, h) {
