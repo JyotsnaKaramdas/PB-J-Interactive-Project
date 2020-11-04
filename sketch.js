@@ -92,6 +92,7 @@ function draw() {
   }
 
 
+
   
   // // problematic code
   // player.velocity.x=(mouseX-player.position.x)*0.1; 
