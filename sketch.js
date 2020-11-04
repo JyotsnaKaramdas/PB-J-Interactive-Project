@@ -2,7 +2,8 @@
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
-  sandwich: ['bread', 'jelly', 'peanutButter']
+  sandwich: ['bread', 'jelly', 'peanutButter'],
+  player: 'pbj'
 }
 
 // gradientConstants
@@ -13,12 +14,11 @@ let b1, b2, c1, c2;
 let x, y;
 let dy = 0;
 
-// falling foods
-let foods = [];
-let foodType = ['bread', 'jelly', 'peanutButter'];
+// player = sandwich
+let sandwich;
 
-// variable for disappearing text
-let f = 500;
+// falling jelly array
+let jellies = [];
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -27,6 +27,7 @@ function preload() {
   setting.bread = loadImage('images/bread.png');
   setting.jelly = loadImage('images/jelly.png');
   setting.peanutButter = loadImage('images/peanutButter.png');
+  setting.pbj = loadImage('images/pbj.png');
 }
 
 function setup() {
@@ -41,11 +42,19 @@ function setup() {
   // define movingGradientVariables
   x = 0;
   y = -2900;
+
+  // jelly for-loop
+  for (let i = 0; i < 100; i += 5) {
+    jellies[i] = new Jelly(random(width), random(height), 50, 20);
+  }
+
+  // player = sandwich
+  sandwich = new Sandwich(200, 90);
 }
 
 function draw() {
   // backgroundColorChanges
-  speed = 0.005;
+  speed = 0.25;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
 
@@ -54,24 +63,19 @@ function draw() {
   image(setting.blanket, 50, 500 + frameCount * 0.005, 500, 130);
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
-  // mouseX (sandwich)
-  sandwich();
-
-  //shift notification properties
-  fill(255, f);
-  noStroke();
-  textSize(18);
-  textFont('Itim');
-  text('Press SHIFT to start!', 200, 35);
-  if (f > 0) {
-    f--;
+  // jelly for-loop
+  for (let i = 0; i < jellies.length; i += 5) {
+    jellies[i].update();
+    jellies[i].display();
+     for (let j = 0; j < jellies.length; j++) {
+      if (i != j && jellies[i].intersects(sandwich)) {
+        // let last = jellies.pop();
+        // change jellies into sandwiches
+      }
+    }
   }
-
-  // falling foods for-loop
-  for(let food of foods) {
-    food.draw();
-    food.update();
-  }
+  // player = sandwich 
+  sandwich.display(mouseX, mouseY);
 }
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
@@ -86,75 +90,40 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
   }
 }
 
-function sandwich() {
-  image(setting.bread, mouseX, mouseY + 5, 125, 50);
-  image(setting.jelly, mouseX -25, mouseY -10, 165, 63);
-  image(setting.peanutButter, mouseX - 5, mouseY - 10, 130, 55);
-  image(setting.bread, mouseX, mouseY - 20, 125, 50);
-}
-
-function keyPressed() {
-  if(keyCode === SHIFT) {
-      addAFood();
+function Jelly(x, y, w, h) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  
+  this.intersects = function(sandwich) {
+    let d = dist(this.x, this.y, sandwich.x, sandwich.y);
+    if (d < this.w && this.h + sandwich.w && sandwich.h) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  this.display = function() {
+    image(setting.jelly, this.x, this.y, this.w, this.h);
+  }
+  this.update = function() {
+    this.y = this.y += (1.5);
+    if (this.y > height){ 
+			  this.y = -this.h;
+		}
   }
 }
 
-function addAFood() {
-  if (random(foodType) == 'bread') {
-    let food1 = new Bread(random(0, 500), random(-50, 0) , 125, 50);
-    foods.push(food1);
-  }
-  if (random(foodType) == 'jelly') {
-    let food1 = new Jelly(random(0, 500), random(-50, 0), 165, 63);
-    foods.push(food1);
-  }
-  if (random(foodType) == 'peanutButter') {
-    let food1 = new PeanutButter(random(0, 500), random(-50, 0), 130, 55);
-    foods.push(food1);
-  }
-}
+function Sandwich(w, h) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
 
-class Bread {
-  constructor(x, y, w, h) {
+  this.display = function(x, y) {
     this.x = x;
     this.y = y;
-    this.width = w;
-    this.height = h;
-  }
-  update() {
-    this.y += 2.0;
-  }
-  draw() {
-    image(setting.bread, this.x, this.y, this.width, this.height);
-  }
-}
-
-class Jelly {
-  constructor(x, y, w, h) {
-    this.x = x;
-    this.y = y;
-    this.width = w;
-    this.height = h;
-  }
-  update() {
-    this.y += 2.0;
-  }
-  draw() {
-    image(setting.jelly, this.x, this.y, this.width, this.height);
-  }
-}
-
-class PeanutButter {
-  constructor(x, y, w, h) {
-    this.x = x;
-    this.y = y;
-    this.width = w;
-    this.height = h;
-  }
-  update() {
-    this.y += 2.0;
-  }
-  draw() {
-    image(setting.peanutButter, this.x, this.y, this.width, this.height)
+    image(setting.pbj, this.x, this.y, this.w, this.h);
   }
 }
