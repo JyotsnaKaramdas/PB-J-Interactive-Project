@@ -1,4 +1,4 @@
-// preloadVariables
+// preloadVariables 
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
