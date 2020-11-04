@@ -18,7 +18,7 @@ let foods = [];
 let foodType = ['bread', 'jelly', 'peanutButter'];
 
 // variable for disappearing text
-let f=500;
+let f = 500;
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -55,15 +55,15 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (sandwich)
-  sandwich() ;
+  sandwich();
 
   //shift notification properties
-  fill(255,f);
+  fill(255, f);
   noStroke();
   textSize(18);
   textFont('Itim');
-  text('Press SHIFT to start!',200,35);
-  if (f>0) {
+  text('Press SHIFT to start!', 200, 35);
+  if (f > 0) {
     f--;
   }
 
@@ -87,10 +87,10 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
 }
 
 function sandwich() {
-  image(setting.bread, mouseX, mouseY , 150, 55);
-  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
-  image(setting.peanutButter, mouseX, mouseY, 140, 45);
-  image(setting.bread, mouseX, mouseY - 20, 150, 55);
+  image(setting.bread, mouseX, mouseY + 5, 125, 50);
+  image(setting.jelly, mouseX -25, mouseY -10, 165, 63);
+  image(setting.peanutButter, mouseX - 5, mouseY - 10, 130, 55);
+  image(setting.bread, mouseX, mouseY - 20, 125, 50);
 }
 
 function keyPressed() {
@@ -101,15 +101,15 @@ function keyPressed() {
 
 function addAFood() {
   if (random(foodType) == 'bread') {
-    let food1 = new Bread(random(0, 500), random(-50, 0) , 135, 50, 135, 50);
+    let food1 = new Bread(random(0, 500), random(-50, 0) , 125, 50);
     foods.push(food1);
   }
   if (random(foodType) == 'jelly') {
-    let food1 = new Jelly(random(0, 500), random(-50, 0), 135, 50, 135, 50);
+    let food1 = new Jelly(random(0, 500), random(-50, 0), 165, 63);
     foods.push(food1);
   }
   if (random(foodType) == 'peanutButter') {
-    let food1 = new PeanutButter(random(0, 500), random(-50, 0), 115, 50, 135, 50);
+    let food1 = new PeanutButter(random(0, 500), random(-50, 0), 130, 55);
     foods.push(food1);
   }
 }
