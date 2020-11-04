@@ -20,13 +20,6 @@ let foodType = ['bread', 'jelly', 'peanutButter']
 // variable for disappearing text 
 let f=500; 
 
-// // code that needs to be debugged 
-// // let condimentsCollected=0; 
-// let condiments; 
-// let player; 
-// let scoreTracker = 0; 
-// // let game; 
-
 function preload() {
   setting.park = loadImage('images/park.png');
   setting.blanket = loadImage('images/blanket.png');
@@ -48,20 +41,6 @@ function setup() {
   // define movingGradientVariables 
   x = 0;
   y = -2900;
-
-
-  // // problematic code 
-  // condiments= new Group();
-  // for (var i=0; i<50;i++) { 
-  //   var p = peanutButter(random(0, 500), random(-50, 0),135,50);  
-  //   var j =jelly(random(0, 500), random(-50, 0),135,50); 
-  //   condiments.add(p);
-  //   condiments.add(j);
-  // }
-  //   player= (image(setting.bread, mouseX, mouseY, 150, 50),  
-  //   image(setting.jelly, mouseX, mouseY , 150, 50),  
-  //   image(setting.peanutButter, mouseX, mouseY, 150, 50),  
-  //   image(setting.bread, mouseX, mouseY , 150, 50));  
 }
 
 function draw() {
@@ -76,31 +55,10 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (sandwich)
- 
-      image(setting.bread, mouseX, mouseY , 150, 55);
-      image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
-      image(setting.peanutButter, mouseX, mouseY, 140, 45);
-      image(setting.bread, mouseX, mouseY - 20, 150, 55);
-
-
-      // image(setting.bread, mouseX, mouseY , 150*i, 55*i);
-      // image(setting.jelly, mouseX -15, mouseY - 10 , 175*i, 65*i);
-      // image(setting.peanutButter, mouseX, mouseY, 140*i, 45*i);
-      // image(setting.bread, mouseX, mouseY - 20, 150*i, 55*i);
-  }
-  
-
-
-
-
-  
-
-  // // score tracker properties  
-  // fill('black'); 
-  // textSize(30); 
-  // textFont('Itim'); 
-  // text('SCORE:', 425, 45); 
-  // text(scoreTracker, 535, 45); 
+  image(setting.bread, mouseX, mouseY , 150, 55);
+  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
+  image(setting.peanutButter, mouseX, mouseY, 140, 45);
+  image(setting.bread, mouseX, mouseY - 20, 150, 55);
 
   //shift notification properties
   fill(255,f);
@@ -111,21 +69,13 @@ function draw() {
   if (f>0) {
     f--;
   }
-  
-  // // problematic code
-  // player.velocity.x=(mouseX-player.position.x)*0.1; 
-  //   player.overlap(condiments,getCondiments); 
-
-  //   if (condiments.length>0) { 
-  //     text('SCORE:', 425, 45); 
-  //   }
 
   // falling foods for-loop
   for(let food of foods) {
     food.draw();
     food.update();
   }
-
+}
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
@@ -139,13 +89,6 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
     }
   }
 }
-
-// // call function in draw();
-// function getCondiments(player,condiment) { 
-//     condiment.remove();
-//     scoreTracker+=1  
-//   }
-// }
 
 function keyPressed() {
   if(keyCode === SHIFT) {
@@ -192,21 +135,12 @@ class Jelly {
   }
   update() {
     this.y += 2.0;
-    // if (this.height>windowHeight) {
-    //   for (let i=1; i+=5; );
-       
-      
-      
-    }
-  
+  }
   draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
   }
 }
 
-
-  
-   
 class PeanutButter {
   constructor(x, y, w, h) {
     this.x = x;
@@ -221,15 +155,3 @@ class PeanutButter {
     image(setting.peanutButter, this.x, this.y, this.width, this.height)
   }
 }
- 
-// //object collision detector
-// p5.prototype.objectCollison = function (x,y,w,h,x2,y2,w2,h2) {
-//   if (x+w>=w2 &&
-//       x<=x2+w2 &&
-//       y+h>=y2 &&
-//       y<=y2+h2) {
-//         //distance is less than the radius=collision
-//         return true;
-//   }
-//       return false;
-// }
