@@ -77,10 +77,10 @@ function draw() {
 
   // mouseX (sandwich)
  
-      image(setting.bread, mouseX, mouseY , 150, 55);
-      image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
-      image(setting.peanutButter, mouseX, mouseY, 140, 45);
-      image(setting.bread, mouseX, mouseY - 20, 150, 55);
+  image(setting.bread, mouseX, mouseY , 150, 55);
+  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
+  image(setting.peanutButter, mouseX, mouseY, 140, 45);
+  image(setting.bread, mouseX, mouseY - 20, 150, 55);
 
 
       // image(setting.bread, mouseX, mouseY , 150*i, 55*i);
@@ -111,6 +111,7 @@ function draw() {
   if (f>0) {
     f--;
   }
+
   
   // // problematic code
   // player.velocity.x=(mouseX-player.position.x)*0.1; 
@@ -192,12 +193,10 @@ class Jelly {
   }
   update() {
     this.y += 2.0;
-    // if (this.height>windowHeight) {
-    //   for (let i=1; i+=5; );
+    
        
       
-      
-    }
+}
   
   draw() {
     image(setting.jelly, this.x, this.y, this.width, this.height);
