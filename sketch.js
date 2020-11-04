@@ -55,10 +55,7 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // mouseX (sandwich)
-  image(setting.bread, mouseX, mouseY , 150, 55);
-  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
-  image(setting.peanutButter, mouseX, mouseY, 140, 45);
-  image(setting.bread, mouseX, mouseY - 20, 150, 55);
+  sandwich() ;
 
   //shift notification properties
   fill(255,f);
@@ -88,6 +85,13 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
       line(x, i, x + w, i);
     }
   }
+}
+
+function sandwich() {
+  image(setting.bread, mouseX, mouseY , 150, 55);
+  image(setting.jelly, mouseX -15, mouseY - 10 , 175, 65);
+  image(setting.peanutButter, mouseX, mouseY, 140, 45);
+  image(setting.bread, mouseX, mouseY - 20, 150, 55);
 }
 
 function keyPressed() {
