@@ -30,6 +30,8 @@ let bread = [];
 let e;
 let de = 0;
 
+let f=100;
+
 function preload() {
   setting.park = loadImage('images/park.png');
   setting.blanket = loadImage('images/blanket.png');
@@ -86,7 +88,19 @@ function draw() {
   
   // falling foods
   keyPressed();
+
+
+  fill(255, f);
+  noStroke();
+  textSize(18);
+  textFont('Itim');
+  text('Press SHIFT to start the storm!',160,35);
+  if (f>0) {
+  
+    f--;
+  }
 }
+
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
