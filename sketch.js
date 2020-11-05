@@ -17,6 +17,8 @@ let dy = 0;
 // player = sandwich
 let sandwich;
 
+let clouds;
+
 // falling foods
 let jellies = [];
 let s; 
@@ -40,7 +42,10 @@ function preload() {
   setting.peanutButter=loadImage('images/peanutButter.png')
   setting.jelly = loadImage('images/jelly.png');
   setting.pbj = loadImage('images/pbj.png');
+  setting.clouds=loadImages('images/clouds.png')
+
 }
+
 
 function setup() {
   createCanvas(600, 650);
