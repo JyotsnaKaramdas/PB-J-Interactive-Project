@@ -2,7 +2,7 @@
 
 Cloudy With A Chance of PB&J is a key interactive animation, where the player must press the SHIFT key to see a 'storm' of peanut butter, jelly, and bread. 
 
-![Screen Shot 2020-11-05 at 6.41.26 PM.png](https://github.com/JyotsnaKaramdas/PB-J-Interactive-Project/blob/main/images/Screen%20Shot%202020-11-02%20at%2010.41.52%20PM.png?raw=true) 
+![Screen Shot 2020-11-05 at 6.41.26 PM.png](https://jyotsnakaramdas.github.io/PB-J-Interactive-Project/)
 
 
 ## Authors
