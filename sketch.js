@@ -48,7 +48,7 @@ function setup() {
   angleMode(DEGREES);
   
   // define gradientColors
-  c1 = color(285, 100, 30); // top color
+  c1 = color(80, 100, 30); // top color
   c2 = color(195, 100, 100); // bottom color
   
   // define movingGradientVariables
@@ -74,17 +74,17 @@ function setup() {
 
 function draw() {
   // backgroundColorChanges
-  speed = 0.25;
+  speed = 1;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
   
   // park setting images
-  image(setting.park, -100, 100 + frameCount * 0.005, 770, 600);
-  image(setting.blanket, 50, 500 + frameCount * 0.005, 500, 130);
-  image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
+  image(setting.park, -100, 100 + frameCount * 0.3, 770, 600);
+  image(setting.blanket, 50, 500 + frameCount * 0.3, 500, 130);
+  image(setting.basket, 130, 520 + frameCount * 0.3, 90, 80);
 
   // player = sandwich
-  sandwich.display(mouseX, mouseY);
+  sandwich.display(250, 500 + frameCount * 0.3);
   
   // falling foods
   keyPressed();
