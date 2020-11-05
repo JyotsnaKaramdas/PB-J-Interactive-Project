@@ -1,6 +1,6 @@
 // preloadVariables
 let setting = {
-  background: 'park',
+  background: ['park', 'clouds'],
   objects: ['blanket', 'basket'],
   sandwich: ['bread', 'jelly','peanutButter'],
   player: 'pbj'
@@ -17,8 +17,6 @@ let dy = 0;
 // player = sandwich
 let sandwich;
 
-let clouds;
-
 // falling foods
 let jellies = [];
 let s; 
@@ -32,20 +30,19 @@ let bread = [];
 let e;
 let de = 0;
 
+// variable for fading text 
 let f=500;
 
 function preload() {
   setting.park = loadImage('images/park.png');
+  setting.clouds = loadImage('images/clouds.png');
   setting.blanket = loadImage('images/blanket.png');
   setting.basket = loadImage('images/basket.png');
   setting.bread = loadImage('images/bread.png');
   setting.peanutButter=loadImage('images/peanutButter.png')
   setting.jelly = loadImage('images/jelly.png');
   setting.pbj = loadImage('images/pbj.png');
-  setting.clouds=loadImages('images/clouds.png')
-
 }
-
 
 function setup() {
   createCanvas(600, 650);
@@ -83,6 +80,11 @@ function draw() {
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
   
+  //clouds
+  image(setting.clouds, -90, -70, 300, 100); // let cloud
+  image(setting.clouds, 420, -70, 250, 100); // right cloud
+  image(setting.clouds, 150, -150, 300, 200); // center cloud
+
   // park setting images
   image(setting.park, -100, 100 + frameCount * 0.3, 770, 600);
   image(setting.blanket, 50, 500 + frameCount * 0.3, 500, 130);
@@ -97,9 +99,9 @@ function draw() {
 
   fill(255, f);
   noStroke();
-  textSize(18);
+  textSize(20);
   textFont('Itim');
-  text('Press SHIFT to start the storm!',160,35);
+  text('Press SHIFT in 10 seconds to start the storm!', 125, 80);
   if (f>=0) {
   
     f--;
