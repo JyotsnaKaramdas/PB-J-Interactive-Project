@@ -2,7 +2,7 @@
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
-  sandwich: ['bread', 'jelly', 'peanutButter'],
+  sandwich: 'bread',
   player: 'pbj'
 }
 // gradientConstants
@@ -21,9 +21,9 @@ function preload() {
   setting.blanket = loadImage('images/blanket.png');
   setting.basket = loadImage('images/basket.png');
   setting.bread = loadImage('images/bread.png');
-  setting.jelly = loadImage('images/jelly.png');
-  setting.peanutButter = loadImage('images/peanutButter.png');
   setting.pbj = loadImage('images/pbj.png');
+  
+  
 }
 function setup() {
   createCanvas(600, 650);
@@ -37,8 +37,12 @@ function setup() {
   y = -2900;
 
   // jelly for-loop
-  for (let i = 0; i < 50; i += 5) {
-    jellies[i] = new Jelly(random(width), random(height), 60, 20);
+
+  for (i=0; i<2;i++) {
+    if (condiments!=c) {
+      condiments[i]= new Condiments()
+    }
+    
   }
 
   // player = sandwich
@@ -54,9 +58,11 @@ function draw() {
   image(setting.blanket, 50, 500 + frameCount * 0.005, 500, 130);
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
   // jelly for-loop
-  for (let i = 0; i < jellies.length; i += 5) {
-    jellies[i].update();
-    jellies[i].display();
+  for (let i = 0; i < condiments.length; i += 5) {
+    condiments[i].update();
+    condiments[i].display();
+    //  condiments[i].overlaps();
+    //  condiments[i].touches();
   }
   // player = sandwich
   sandwich.display(mouseX, mouseY);
@@ -80,7 +86,7 @@ class Jelly {
     this.h = h;
   }
   display() {
-    image(setting.jelly, this.x, this.y, this.w, this.h);
+    image(condiments[i], this.x1, this.y1, this.x2, this.y2);
   }
   update() {
     this.y = this.y += (1.5);
@@ -97,9 +103,11 @@ class Sandwich {
     this.w = w;
     this.h = h;
   }
-  display(x, y) {
-    this.x = x;
-    this.y = y;
-    image(setting.pbj, this.x, this.y, this.w, this.h);
+  display(x1, y1,x2,y2) {
+    this.x1 = x1;
+    this.y1 = y1;
+    this.x2=x2;
+    this.y2=y2;
+    image(setting.pbj, this.x1, this.y1, this.x2, this.y2);
   }
 }
