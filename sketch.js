@@ -2,7 +2,7 @@
 let setting = {
   background: 'park',
   objects: ['blanket', 'basket'],
-  sandwich: ['bread', 'jelly'],
+  sandwich: ['bread', 'jelly','peanutButter'],
   player: 'pbj'
 }
 
@@ -17,6 +17,8 @@ let dy = 0;
 // player = sandwich
 let sandwich;
 
+
+
 // falling jelly array
 let jellies = [];
 
@@ -25,6 +27,7 @@ function preload() {
   setting.blanket = loadImage('images/blanket.png');
   setting.basket = loadImage('images/basket.png');
   setting.bread = loadImage('images/bread.png');
+  setting.peanutButter=loadImage('images/peanutButter.png')
   setting.jelly = loadImage('images/jelly.png');
   setting.pbj = loadImage('images/pbj.png');
 }
@@ -33,6 +36,10 @@ function setup() {
   createCanvas(600, 650);
   colorMode(HSB);
   angleMode(DEGREES);
+
+ 
+
+  
   
   // define gradientColors
   c1 = color(285, 100, 30); // top color
@@ -43,9 +50,9 @@ function setup() {
   y = -2900;
 
   // jelly for-loop
-  for (let i = 0; i < 50; i += 5) {
-    jellies[i] = new Jelly(random(width), random(height), 60, 20);
-  }
+  // for (let i = 0; i < 50; i += 5) {
+  //   jellies[i] = new Jelly(random(width), random(height), 60, 20);
+  // }
 
   // player = sandwich
   sandwich = new Sandwich(random(width), random(height), 200, 90);
@@ -56,6 +63,10 @@ function draw() {
   speed = 0.25;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
+
+  if (keyIsDown(DOWN_ARROW)) {
+    image(setting.jelly,random(width),y*3.5,60,20);
+  }
   
   // park setting images
   image(setting.park, -100, 100 + frameCount * 0.005, 770, 600);
@@ -63,13 +74,32 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
   
   // jelly for-loop
-  for (let i = 0; i < jellies.length; i += 5) {
-    jellies[i].update();
-    jellies[i].display();
-  }
+  // for (let i = 0; i < jellies.length; i += 5) {
+  //   jellies[i].update();
+  //   jellies[i].display();
+    
+
+  
 
   // player = sandwich
   sandwich.display(mouseX, mouseY);
+}
+
+
+
+function keyPressed() {
+  if (keyCode===UP_ARROW){
+    for (let i = 0; i < 50; i += 5) {
+      jellies[i] = new Jelly(random(width), random(height), 60, 20);
+      for (let i = 0; i < jellies.length; i += 5) {
+        jellies[i].update();
+        jellies[i].display();
+    }
+  }
+  
+
+  }
+
 }
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
@@ -84,21 +114,35 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
   }
 }
 
+// function keyPressed() {
+//   if (keyCode==UP_ARROW){
+//     jelly.update(this.y*100)
+//   }
+// }
+
 class Jelly {
   constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
+    this.speed=0
   }
   display() {
     image(setting.jelly, this.x, this.y, this.w, this.h);
+    image(setting.peanutButter,this.x,this,y,this.w,this.h);
+  
+    
   }
+  
+  
+  
+  
   update() {
-    this.y = this.y += (1.5);
+   this.y = this.y += (1.5);
     if (this.y > height){
-        this.y = -this.h;
-    }
+       this.y = -this.h;
+    } 
   }
 }
 
@@ -112,8 +156,6 @@ class Sandwich {
   display(x, y) {
     this.x = x;
     this.y = y;
-    // this.w= w;
-    // this.h= h;
     image(setting.pbj, this.x, this.y, this.w, this.h);
   }
 }
