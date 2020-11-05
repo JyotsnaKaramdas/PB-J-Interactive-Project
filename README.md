@@ -1,8 +1,8 @@
-# PB&J 
+# Cloudy With A Chance of PB&J 
 
-PB&J is an mouse interactive game, where the player will use the mouse to slide a piece of bread horizontally across the screen. The player will then press the 'SHIFT' key which causes a condiment to fall. With every press, 1-3 condiments will fall and the player will try to collect as much peanut butter, jelly, and bread, to create the tallest possible PB&J sandwich.
+Cloudy With A Chance of PB&J is a key interactive animation, where the player must press the SHIFT key to see a 'storm' of peanut butter, jelly, and bread. 
 
-![Screen Shot 2020-11-02 at 10.41.52 PM.png](https://github.com/JyotsnaKaramdas/PB-J-Interactive-Project/blob/main/images/Screen%20Shot%202020-11-02%20at%2010.41.52%20PM.png?raw=true) 
+![Screen Shot 2020-11-05 at 6.41.26 PM.png](https://github.com/JyotsnaKaramdas/PB-J-Interactive-Project/blob/main/images/Screen%20Shot%202020-11-02%20at%2010.41.52%20PM.png?raw=true) 
 
 
 ## Authors
@@ -11,6 +11,6 @@ Anna Harbeck and Jyotsna Karamdas
 
 ## Acknowledgements
 
-Thank you to Professor Steele, p5.js examples, and The Coding Train for assisting with our code! Thank you to the iphone Scoops application for the inspiration behind our game :)
+Thank you to Professor Steele, Linda Laszlo, p5.js examples, and The Coding Train for assisting with our code! Thank you to "Cloudy With A Chance of Meatballs" book for the inspiration.
 
 
