@@ -130,18 +130,45 @@ function PeanutButter(x, y, w, h) {
   this.hit = false;
   
   this.intersects = function(sandwich) {
-    let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
-      if (this.hit) {
-        return true; 
-      } else {
-        return false;
-      }
+    let d = dist(this.x, this.y, sandwich.x, sandwich.y);
+    if (d < this.w && this.h + sandwich.w && sandwich.h) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  this.display = function() {
+    image(setting.jelly, this.x, this.y, this.w, this.h);
+  }
+  this.update = function() {
+    this.y = this.y += (1.5);
+    if (this.y > height){ 
+        this.y = -this.h;
+    }
+  }
+}
+
+  
+  
+  
+  
+  
+  
+  // this.intersects = function(sandwich) {
+  //   let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
+  //     if (this.hit) {
+  //       return true; 
+  //     } else {
+  //       return false;
+  //     }
+
+    
     // if (d < this.w && this.h + sandwich.w && sandwich.h) {
     //   return true;
     // } else {
     //   return false;
     // }
-  }
+  
   this.display = function() {
     image(setting.peanutButter, this.x, this.y, this.w, this.h);
   }
@@ -151,7 +178,7 @@ function PeanutButter(x, y, w, h) {
 			  this.y = -this.h;
 		}
   }
-}
+
 
 function Sandwich(w, h) {
   this.x = x;
