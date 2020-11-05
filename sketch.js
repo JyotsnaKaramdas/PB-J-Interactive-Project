@@ -71,11 +71,14 @@ function draw() {
   for (let i = 0; i < jellies.length; i += 5) {
     jellies[i].update();
     jellies[i].display();
-    for (let i = 0; i < peanuts.length; i += 5) {
+  }
+
+  // peanut butter for-loop
+  for (let i = 0; i < peanuts.length; i += 5) {
       peanuts[i].update();
       peanuts[i].display();
     }
-  }
+
   // player = sandwich 
   sandwich.display(mouseX, mouseY);
 }
@@ -92,101 +95,77 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
   }
 }
 
-function Jelly(x, y, w, h) {
-  this.x = x;
-  this.y = y;
-  this.w = w;
-  this.h = h;
-  this.hit = false;
-  
-  this.intersects = function(sandwich) {
+class Jelly {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.hit = false;
+  }
+  intersects(sandwich) {
     let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
-      if (this.hit) {
-        return true; 
-      } else {
-        return false;
-      }
+    if (this.hit) {
+      return true;
+    } else {
+      return false;
+    }
     if (d < this.w && this.h + sandwich.w && sandwich.h) {
       return true;
     } else {
       return false;
     }
   }
-  this.display = function() {
+  display() {
     image(setting.jelly, this.x, this.y, this.w, this.h);
   }
-  this.update = function() {
+  update() {
     this.y = this.y += (1.5);
     if (this.y > height){ 
 			  this.y = -this.h;
 		}
   }
 }
-function PeanutButter(x, y, w, h) {
-  this.x = x;
-  this.y = y;
-  this.w = w;
-  this.h = h;
-  this.hit = false;
-  
-  this.intersects = function(sandwich) {
-    let d = dist(this.x, this.y, sandwich.x, sandwich.y);
+class PeanutButter {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.hit = false;
+  }
+ intersects(sandwich) {
+    let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
+    if (this.hit) {
+      return true;
+    } else {
+      return false;
+    }
     if (d < this.w && this.h + sandwich.w && sandwich.h) {
       return true;
     } else {
       return false;
     }
   }
-  this.display = function() {
+  display() {
     image(setting.peanutButter, this.x, this.y, this.w, this.h);
   }
-  this.update = function() {
-    this.y = this.y += (0.095);
+  update() {
+    this.y = this.y += (1.5);
     if (this.y > height){ 
         this.y = -this.h;
     }
   }
 }
-
-  
-  
-  
-  
-  
-  
-  // this.intersects = function(sandwich) {
-  //   let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
-  //     if (this.hit) {
-  //       return true; 
-  //     } else {
-  //       return false;
-  //     }
-
-    
-    // if (d < this.w && this.h + sandwich.w && sandwich.h) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-  
-  this.display = function() {
-    image(setting.peanutButter, this.x, this.y, this.w, this.h);
+ 
+class Sandwich {
+  constructor(w, h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
   }
-  this.update = function() {
-    this.y = this.y += (0.095);
-    if (this.y > height){ 
-			  this.y = -this.h;
-		}
-  }
-
-
-function Sandwich(w, h) {
-  this.x = x;
-  this.y = y;
-  this.w = w;
-  this.h = h;
-
-  this.display = function(x, y) {
+  display(x, y) {
     this.x = x;
     this.y = y;
     image(setting.pbj, this.x, this.y, this.w, this.h);
