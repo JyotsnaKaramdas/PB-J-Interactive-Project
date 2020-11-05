@@ -106,11 +106,11 @@ function Jelly(x, y, w, h) {
       } else {
         return false;
       }
-    // if (d < this.w && this.h + sandwich.w && sandwich.h) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
+    if (d < this.w && this.h + sandwich.w && sandwich.h) {
+      return true;
+    } else {
+      return false;
+    }
   }
   this.display = function() {
     image(setting.jelly, this.x, this.y, this.w, this.h);
@@ -138,10 +138,10 @@ function PeanutButter(x, y, w, h) {
     }
   }
   this.display = function() {
-    image(setting.jelly, this.x, this.y, this.w, this.h);
+    image(setting.peanutButter, this.x, this.y, this.w, this.h);
   }
   this.update = function() {
-    this.y = this.y += (1.5);
+    this.y = this.y += (0.095);
     if (this.y > height){ 
         this.y = -this.h;
     }
