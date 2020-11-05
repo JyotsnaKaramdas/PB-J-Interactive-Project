@@ -18,12 +18,8 @@ let dy = 0;
 let sandwich;
 
 // falling jelly array
-let condiments = [];
-var scoreTracker=0
-
-//let pbs= [];
-
-
+let jellies = [];
+let peanuts = [];
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -33,11 +29,9 @@ function preload() {
   setting.jelly = loadImage('images/jelly.png');
   setting.peanutButter = loadImage('images/peanutButter.png');
   setting.pbj = loadImage('images/pbj.png');
-  mode=0 // find a new way to start the game
 }
 
 function setup() {
-  mode=0;
   createCanvas(600, 650);
   colorMode(HSB);
   angleMode(DEGREES);
@@ -51,28 +45,20 @@ function setup() {
   y = -2900;
 
   // jelly for-loop
-  for (let i = 0; i < 25; i ++) {
-    if (random()<0.5){
-      condiments[i] = new Jelly(150*i);
-    }
-    
-  // } else condiments[i]= new PeanutButter(150*i);
-    // jellies[i] = new Jelly(random(width), random(height), 80, 25);
+  for (let i = 0; i < 50; i += 5) {
+    jellies[i] = new Jelly(random(width), random(height), 60, 20);
   }
-
-  //pb for-loop
-  // for (let k = 0; k < 25; k += 5) {
-  //   pbs[k]= new PeanutButter(random(width), random(height), 80, 25);
-
-  // }
-
+  // jelly for-loop
+  for (let i = 0; i < 50; i += 5) {
+    peanuts[i] = new PeanutButter(random(width), random(height), 50, 20);
+}
   // player = sandwich
-  //sandwich = new Sandwich(200, 90);
+  sandwich = new Sandwich(200, 90);
 }
 
 function draw() {
   // backgroundColorChanges
-  speed = 0.1;
+  speed = 0.25;
   y = y + speed;
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
 
@@ -82,34 +68,17 @@ function draw() {
   image(setting.basket, 130, 520 + frameCount * 0.005, 90, 80);
 
   // jelly for-loop
-  // for (let i = 0; i < jellies.length; i += 5) {
-  //   jellies[i].update();
-  //   jellies[i].display();
-  //    for (let j = 0; j < jellies.length; j++) {
-  //     if (i != j && jellies[i].intersects(sandwich)) {
-  //       // let last = jellies.pop();
-  //       // change jellies into sandwiches
-  //     }
-  //   }
- 
-    //pb for loop
-    
-  //   for (let k = 0; k < pbs.length; k +=5) {
-  //     pbs[k].update();
-  //     pbs[k].display();
-  //       for (let p=0; p<pbs.length; p++) {
-  //         if (k!= p && pbs[k].intersects(sandwich)) {
-
-  //         }
-  //       }
-  //   }
-  // }
-
-
+  for (let i = 0; i < jellies.length; i += 5) {
+    jellies[i].update();
+    jellies[i].display();
+    for (let i = 0; i < peanuts.length; i += 5) {
+      peanuts[i].update();
+      peanuts[i].display();
+    }
+  }
   // player = sandwich 
-  //sandwich.display(mouseX, mouseY);
+  sandwich.display(mouseX, mouseY);
 }
-
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
@@ -122,107 +91,77 @@ function verticalGradient(x, y, w, h, c1, c2, axis) {
     }
   }
 }
-if (mode==1) {
-  for (let Condiment of condiments) {
-    Condiment.display();
-    //Condiment.move();
-  }
-  image(setting.pbj,mouseX, mouseY,pbj.width*.1,pbj.height*.1);
-}
 
-
-function mousePressed() {
-  for (let Condiment of condiments) {
-    Condiment.clicked();
-  }
-}
-
-class Jelly extends Condiment {
-  constructor (x,y) {
-    super();
-    this.x=x;
-    this.y= random(0,640);
-    this.radius=random (10,30);
-}
-clicked() {
-  var d= dist(mouseX-25,mouseY-20,this.x,this.y);
-  if (d<this.radius/2==true) {
-    this.radius=0.01;
-    scoreTracker++
-  } else {
-    if (d<this.radius/2==false) {
-      scoreTracker+=0
-    }
-  }
-}
-display() {
-  push();
-  image(setting.jelly,this.x,this.y,this.radius, this.radius);
-  pop();
-}
-
-}
-
-// class PeanutButter extends Condiment {
-//   constructor (x,y){
-//     super();
-//     this.x=x;
-//     this.y= random(0,640);
-//     this.radius=random (10,30);
-//   }
-//   clicked() {
-//     var d= dist(mouseX-25,mouseY-20,this.x,this.y);
-//     if (d<this.radius/2==true) {
-//       this.radius=0.01;
-//       scoreTracker++
-//     } else {
-//       if (d<this.radius/2==false) {
-//         scoreTracker+=0
-//       }
-//     }
-//   }
-// }
-
-
-
-// function Jelly(x, y, w, h) {
-//   this.x = x;
-//   this.y = y;
-//   this.w = w;
-//   this.h = h;
+function Jelly(x, y, w, h) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.hit = false;
   
-//   this.intersects = function(sandwich) {
-//     let d = dist(this.x, this.y, sandwich.x, sandwich.y);
-//     if (d < this.w && this.h + sandwich.w && sandwich.h) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   }
-//   this.display = function() {
-//     image(setting.jelly, this.x, this.y, this.w, this.h);
-//   }
-//   this.update = function() {
-//     this.y = this.y += (1.5);
-//     if (this.y > height){ 
-//         this.y = -this.h;
-//     }
-//   }
-// }
+  this.intersects = function(sandwich) {
+    let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
+      if (this.hit) {
+        return true; 
+      } else {
+        return false;
+      }
+    // if (d < this.w && this.h + sandwich.w && sandwich.h) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+  }
+  this.display = function() {
+    image(setting.jelly, this.x, this.y, this.w, this.h);
+  }
+  this.update = function() {
+    this.y = this.y += (1.5);
+    if (this.y > height){ 
+			  this.y = -this.h;
+		}
+  }
+}
+function PeanutButter(x, y, w, h) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.hit = false;
+  
+  this.intersects = function(sandwich) {
+    let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
+      if (this.hit) {
+        return true; 
+      } else {
+        return false;
+      }
+    // if (d < this.w && this.h + sandwich.w && sandwich.h) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+  }
+  this.display = function() {
+    image(setting.peanutButter, this.x, this.y, this.w, this.h);
+  }
+  this.update = function() {
+    this.y = this.y += (0.095);
+    if (this.y > height){ 
+			  this.y = -this.h;
+		}
+  }
+}
 
-// function Sandwich(w, h) {
-//   this.x = x;
-//   this.y = y;
-//   this.w = w;
-//   this.h = h;
+function Sandwich(w, h) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
 
-//   this.display = function(x, y) {
-//     this.x = x;
-//     this.y = y;
-//     image(setting.pbj, this.x, this.y, this.w, this.h);
-//   }
-// }
-
-
-
-
+  this.display = function(x, y) {
+    this.x = x;
+    this.y = y;
+    image(setting.pbj, this.x, this.y, this.w, this.h);
+  }
+}
