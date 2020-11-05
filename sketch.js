@@ -48,7 +48,7 @@ function setup() {
   }
 
   // player = sandwich
-  sandwich = new Sandwich(100, 100, 200, 90);
+  sandwich = new Sandwich(random(width), random(height), 200, 90);
 }
 
 function draw() {
@@ -92,7 +92,7 @@ class Jelly {
     this.h = h;
   }
   display() {
-    image(setting.jelly, this.x1, this.y1, this.x2, this.y2);
+    image(setting.jelly, this.x, this.y, this.w, this.h);
   }
   update() {
     this.y = this.y += (1.5);
@@ -109,11 +109,11 @@ class Sandwich {
     this.w = w;
     this.h = h;
   }
-  display(x1, y1,x2,y2) {
-    this.x1 = x1;
-    this.y1 = y1;
-    this.x2=x2;
-    this.y2=y2;
-    image(setting.pbj, this.x1, this.y1, this.x2, this.y2);
+  display(x, y) {
+    this.x = x;
+    this.y = y;
+    // this.w= w;
+    // this.h= h;
+    image(setting.pbj, this.x, this.y, this.w, this.h);
   }
 }
