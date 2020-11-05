@@ -30,7 +30,7 @@ let bread = [];
 let e;
 let de = 0;
 
-let f=100;
+let f=500;
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -95,7 +95,7 @@ function draw() {
   textSize(18);
   textFont('Itim');
   text('Press SHIFT to start the storm!',160,35);
-  if (f>0) {
+  if (f>=0) {
   
     f--;
   }
