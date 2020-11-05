@@ -101,19 +101,22 @@ class Jelly {
     this.y = y;
     this.w = w;
     this.h = h;
-    this.hit = false;
   }
   intersects(sandwich) {
-    let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
-    if (this.hit) {
-      return true;
-    } else {
+    let d = dist(this.x, this.y, sandwich.x, sandwich.y);
+    if (d < (this.x + this.w) + sandwich.x) {
       return false;
     }
-    if (d < this.w && this.h + sandwich.w && sandwich.h) {
-      return true;
-    } else {
+    if (d < this.x + (sandwich.x + sandwich.w)) {
       return false;
+    }
+    if (d < ) {
+      return false;
+    }
+    if (d < ) {
+      return false;
+    } else {
+      return true;
     }
   }
   display() {
@@ -132,19 +135,22 @@ class PeanutButter {
     this.y = y;
     this.w = w;
     this.h = h;
-    this.hit = false;
   }
  intersects(sandwich) {
-    let d = dist(this.x, this.y, mouseX - 10, mouseY - 10);
-    if (this.hit) {
-      return true;
-    } else {
+    let d = dist(this.x, this.y, sandwich.x, sandwich.y);
+    if (d < this.x && this.h + sandwich.w && sandwich.h) {
+      return false;
+    } 
+    if (d < ) {
       return false;
     }
-    if (d < this.w && this.h + sandwich.w && sandwich.h) {
-      return true;
-    } else {
+    if (d <) {
       return false;
+    }
+    if (d <) {
+      return false;
+    } else {
+      return true;
     }
   }
   display() {
