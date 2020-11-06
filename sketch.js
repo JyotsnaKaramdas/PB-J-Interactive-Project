@@ -2,7 +2,7 @@
 let setting = {
   background: ['park', 'clouds'],
   objects: ['blanket', 'basket'],
-  sandwich: ['bread', 'jelly','peanutButter'],
+  sandwich: ['bread', 'jelly', 'peanutButter'],
   player: 'pbj'
 }
 
@@ -14,7 +14,7 @@ let b1, b2, c1, c2;
 let x, y;
 let dy = 0;
 
-// player = sandwich
+// sandwich
 let sandwich;
 
 // falling foods
@@ -31,7 +31,7 @@ let e;
 let de = 0;
 
 // variable for fading text 
-let f=500;
+let f = 500;
 
 function preload() {
   setting.park = loadImage('images/park.png');
@@ -57,7 +57,7 @@ function setup() {
   x = 0;
   y = -2900;
 
-  // jelly for-loop
+  // falling food for-loops
   for (let i = 0; i < 50; i += 5) {
     jellies[i] = random(height);
   }
@@ -70,7 +70,7 @@ function setup() {
     bread[i] = random(height);
   }
 
-  // player = sandwich
+  // sandwich
   sandwich = new Sandwich(random(width), random(height), 200, 90);
 }
 
@@ -81,33 +81,31 @@ function draw() {
   verticalGradient(0, y, width, height * 5, c1, c2, Y_AXIS);
   
   //clouds
-  image(setting.clouds, -90, -70, 300, 100); // let cloud
+  image(setting.clouds, -90, -70, 300, 100); // left cloud
   image(setting.clouds, 420, -70, 250, 100); // right cloud
   image(setting.clouds, 150, -150, 300, 200); // center cloud
 
-  // park setting images
+  // park setting 
   image(setting.park, -100, 100 + frameCount * 0.3, 770, 600);
   image(setting.blanket, 50, 500 + frameCount * 0.3, 500, 130);
   image(setting.basket, 130, 520 + frameCount * 0.3, 90, 80);
 
-  // player = sandwich
+  // sandwich
   sandwich.display(250, 500 + frameCount * 0.3);
   
-  // falling foods
+  // falling foods 
   keyPressed();
 
-
+  // text 
   fill(255, f);
   noStroke();
   textSize(20);
   textFont('Itim');
-  text('Press SHIFT in 10 seconds to start the storm!', 125, 80);
-  if (f>=0) {
-  
+  text('Count to 10, then press SHIFT to start the storm!', 105, 200);
+  if (f >= 0) {
     f--;
   }
 }
-
 
 function verticalGradient(x, y, w, h, c1, c2, axis) {
   noFill();
